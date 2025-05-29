@@ -1,0 +1,33 @@
+{
+  "components/visualize/GeospatialView.js -> leaflet": {
+    "id": "components/visualize/GeospatialView.js -> leaflet",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_leaflet_dist_leaflet-src_js.js"
+    ]
+  },
+  "components/visualize/GeospatialView.js -> leaflet/dist/leaflet.css": {
+    "id": "components/visualize/GeospatialView.js -> leaflet/dist/leaflet.css",
+    "files": [
+      "static/css/_app-pages-browser_node_modules_leaflet_dist_leaflet_css.css",
+      "static/chunks/_app-pages-browser_node_modules_leaflet_dist_leaflet_css.js"
+    ]
+  },
+  "components/visualize/OntologyView.js -> ./wrappers/AFrameLoader": {
+    "id": "components/visualize/OntologyView.js -> ./wrappers/AFrameLoader",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_visualize_wrappers_AFrameLoader_js.js"
+    ]
+  },
+  "components/visualize/OntologyView.js -> react-force-graph-2d": {
+    "id": "components/visualize/OntologyView.js -> react-force-graph-2d",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_react-force-graph-2d_dist_react-force-graph-2d_mjs.js"
+    ]
+  },
+  "components/visualize/OntologyView.js -> react-force-graph-vr": {
+    "id": "components/visualize/OntologyView.js -> react-force-graph-vr",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_react-force-graph-vr_dist_react-force-graph-vr_mjs.js"
+    ]
+  }
+}

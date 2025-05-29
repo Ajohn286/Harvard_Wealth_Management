@@ -31,52 +31,52 @@ import SettingsSystemDaydreamIcon from '@mui/icons-material/SettingsSystemDaydre
 export default function OverviewView() {
   // Data sources
   const dataSources = [
-    { 
-      name: 'Internal HR System',
-      systems: ['IBM DB2', 'SQL Server', 'Oracle'],
+    {
+      name: 'FAA Acquisition Management System (AMS)',
+      description: 'Centralized procurement and contract management for FAA operations',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 5243789,
+      recordCount: 234567,
       icon: <StorageIcon />
     },
-    { 
-      name: 'Training Records',
-      systems: ['Guidewire PolicyCenter', 'Duck Creek Policy', 'FINEOS Policy'],
+    {
+      name: 'Volpe Center SBIR Portal',
+      description: 'Small Business Innovation Research program management and submissions',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 789452,
+      recordCount: 15432,
       icon: <StorageIcon />
     },
-    { 
-      name: 'IoT Sensors',
-      systems: ['Guidewire ClaimCenter', 'Majesco Claims', 'InsuranceSuite Claims'],
+    {
+      name: 'System for Award Management (SAM)',
+      description: 'Federal vendor registration and eligibility verification',
       connectionStatus: 'Needs Attention',
       healthStatus: 'amber',
-      recordCount: 412367,
+      recordCount: 982345,
       icon: <StorageIcon />
     },
-    { 
-      name: 'Public Registers',
-      systems: ['SAP ERP', 'NetSuite'],
+    {
+      name: 'FAA AVIATOR System',
+      description: 'Aviation workforce credentialing and training records',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 15224,
+      recordCount: 45231,
       icon: <StorageIcon />
     },
-    { 
-      name: 'Equipment Inventory',
-      systems: ['Salesforce', 'Customer Portal', 'Agent Workbench'],
+    {
+      name: 'Air Traffic Skills Assessment (ATSA)',
+      description: 'Assessment results and candidate tracking for air traffic controllers',
       connectionStatus: 'Critical Issues',
       healthStatus: 'red',
-      recordCount: 142529,
+      recordCount: 12890,
       icon: <StorageIcon />
     },
-    { 
-      name: 'Incident Logs',
-      systems: ['Policy Documents', 'Claims PDFs', 'Underwriting Files'],
+    {
+      name: 'Highway Performance Monitoring System (HPMS)',
+      description: 'National highway data collection and performance metrics',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 204637,
+      recordCount: 345678,
       icon: <StorageIcon />
     }
   ];
@@ -185,7 +185,12 @@ export default function OverviewView() {
                     }}>
                       {source.icon}
                     </Box>
-                    <Typography variant="subtitle2">{source.name}</Typography>
+                    <Box>
+                      <Typography variant="subtitle2">{source.name}</Typography>
+                      <Typography variant="caption" color="text.secondary" display="block">
+                        {source.description}
+                      </Typography>
+                    </Box>
                     <Chip 
                       label={source.connectionStatus} 
                       size="small" 
@@ -197,9 +202,6 @@ export default function OverviewView() {
                     />
                   </Box>
                   <Divider sx={{ my: 1 }} />
-                  <Typography variant="caption" display="block">
-                    Systems: {source.systems.join(', ')}
-                  </Typography>
                   <Typography variant="caption" display="block">
                     Records: {source.recordCount.toLocaleString()}
                   </Typography>
