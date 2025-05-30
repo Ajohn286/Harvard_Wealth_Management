@@ -32,6 +32,54 @@ export default function OverviewView() {
   // Data sources
   const dataSources = [
     {
+      name: 'FAA AVIATOR System',
+      description: 'Aviation workforce credentialing and training records',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 45231,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Air Traffic Skills Assessment (ATSA)',
+      description: 'Assessment results and candidate tracking for air traffic controllers',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 12890,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'ATC Sector DB',
+      description: 'Air Traffic Control Sectors Data',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 23456,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'NTSB: Airspace data',
+      description: 'Airspace data',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 15432,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'NTSB: Near Misses and collisions',
+      description: 'Near Misses and collisions',
+      connectionStatus: 'Needs Attention',
+      healthStatus: 'amber',
+      recordCount: 9823,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'NTSB: Highway Safety Data',
+      description: 'Highway Safety Data',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 34567,
+      icon: <StorageIcon />
+    },
+    {
       name: 'FAA Acquisition Management System (AMS)',
       description: 'Centralized procurement and contract management for FAA operations',
       connectionStatus: 'Healthy',
@@ -40,11 +88,11 @@ export default function OverviewView() {
       icon: <StorageIcon />
     },
     {
-      name: 'Volpe Center SBIR Portal',
-      description: 'Small Business Innovation Research program management and submissions',
+      name: 'Proposal Management System (PMS)',
+      description: 'Announced, created and funded proposals',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 15432,
+      recordCount: 11234,
       icon: <StorageIcon />
     },
     {
@@ -56,19 +104,27 @@ export default function OverviewView() {
       icon: <StorageIcon />
     },
     {
-      name: 'FAA AVIATOR System',
-      description: 'Aviation workforce credentialing and training records',
+      name: 'SBIR Portal',
+      description: 'Small Business Innovation Research program management and submissions',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
-      recordCount: 45231,
+      recordCount: 15432,
       icon: <StorageIcon />
     },
     {
-      name: 'Air Traffic Skills Assessment (ATSA)',
-      description: 'Assessment results and candidate tracking for air traffic controllers',
-      connectionStatus: 'Critical Issues',
-      healthStatus: 'red',
-      recordCount: 12890,
+      name: 'NHTSA Acquisition Management System (NAMS)',
+      description: 'Centralized procurement and contract management',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 22345,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Continental Road Maintenance Data (CRMD)',
+      description: 'Data covering road maintenance',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 34567,
       icon: <StorageIcon />
     },
     {
@@ -77,6 +133,54 @@ export default function OverviewView() {
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 345678,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'NHTSA',
+      description: 'Highway traffic data (for DOT extension)',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 45678,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'National Rail Acquisition Management System (NRAMS)',
+      description: 'Centralized procurement and contract management',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 33456,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Rail Maintenance Data (RMD)',
+      description: 'Data covering rail maintenance',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 22345,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Railway Monitoring System (RMS)',
+      description: 'National highway data collection and performance metrics',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 55678,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Realtime Data',
+      description: 'Real-time Conditions (visibility, precipitation)',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 123456,
+      icon: <StorageIcon />
+    },
+    {
+      name: 'Forecast Data',
+      description: 'Forecast, Weather Patterns (current & historicals)',
+      connectionStatus: 'Healthy',
+      healthStatus: 'green',
+      recordCount: 65432,
       icon: <StorageIcon />
     }
   ];
@@ -186,7 +290,7 @@ export default function OverviewView() {
                       {source.icon}
                     </Box>
                     <Box>
-                      <Typography variant="subtitle2">{source.name}</Typography>
+                    <Typography variant="subtitle2">{source.name}</Typography>
                       <Typography variant="caption" color="text.secondary" display="block">
                         {source.description}
                       </Typography>

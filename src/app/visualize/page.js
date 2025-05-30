@@ -61,8 +61,8 @@ export default function VisualizePage() {
               <Tab label="Overview" />
               <Tab label="Master Data Management" />
               <Tab label="Ontology & Object View" />
-              <Tab label="Process Flow Visualization" />
-              <Tab label="Geospatial Mapping" />
+              {/*<Tab label="Process Flow Visualization" />
+              <Tab label="Geospatial Mapping" />*/}
               <Tab label="Data Quality" />
             </Tabs>
           </Box>
@@ -77,13 +77,13 @@ export default function VisualizePage() {
             <OntologyView />
           </TabPanel>
           <TabPanel value={value} index={3}>
+            <DataQualityView />
+          <TabPanel value={value} index={4}>
             <ProcessFlowView />
           </TabPanel>
-          <TabPanel value={value} index={4}>
+          <TabPanel value={value} index={5}>
             <GeospatialView />
           </TabPanel>
-          <TabPanel value={value} index={5}>
-            <DataQualityView />
           </TabPanel>
         </Paper>
       </Box>

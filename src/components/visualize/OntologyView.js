@@ -60,120 +60,351 @@ const AFrameLoader = dynamic(() => import('./wrappers/AFrameLoader'), { ssr: fal
 // Import ForceGraphVR separately - this automatically uses A-Frame
 const ForceGraphVR = dynamic(() => import('react-force-graph-vr'), { ssr: false });
 
-// Mock data for insurance ontology
+// Mock data for US Department of Transportation ontology
 const ontologyData = {
   rootEntities: [
-    'Fire Station',
-    'Incident',
-    'Personnel',
-    'Equipment',
-    'Training Record',
-    'Response Record'
+    'FAA AVIATOR System',
+    'Air Traffic Skills Assessment (ATSA)',
+    'ATC Sector DB',
+    'NTSB: Airspace data',
+    'NTSB: Near Misses and collisions',
+    'NTSB: Highway Safety Data',
+    'FAA Acquisition Management System (AMS)',
+    'Proposal Management System (PMS)',
+    'System for Award Management (SAM)',
+    'SBIR Portal',
+    'NHTSA Acquisition Management System (NAMS)',
+    'Continental Road Maintenance Data (CRMD)',
+    'Highway Performance Monitoring System (HPMS)',
+    'NHTSA',
+    'National Rail Acquisition Management System (NRAMS)',
+    'Rail Maintenance Data (RMD)',
+    'Railway Monitoring System (RMS)',
+    'Realtime Data',
+    'Forecast Data'
   ],
   entityDetails: {
-    'Fire Station': {
-      name: 'Fire Station',
-      icon: <BusinessIcon />, // fire station icon
-      color: '#3f51b5',
-      description: 'A fire station location and its operational details.',
-      instances: 38,
+    'FAA AVIATOR System': {
+      name: 'FAA AVIATOR System',
+      icon: <StorageIcon />, // aviation icon could be used if available
+      color: '#1976d2',
+      description: 'Aviation workforce credentialing and training records',
+      instances: 45231,
       fields: [
-        { name: 'station_id', type: 'string', description: 'Unique identifier for the fire station' },
-        { name: 'name', type: 'string', description: 'Name of the fire station' },
-        { name: 'address', type: 'string', description: 'Physical address' },
-        { name: 'status', type: 'enum', description: 'Operational status' }
+        { name: 'aviator_id', type: 'string', description: 'Unique identifier for aviator' },
+        { name: 'name', type: 'string', description: 'Aviator name' },
+        { name: 'certification', type: 'string', description: 'Certification type' }
       ],
       relationships: [
-        { entity: 'Personnel', type: 'employs', cardinality: '1:N', description: 'Fire station employs personnel' },
-        { entity: 'Equipment', type: 'houses', cardinality: '1:N', description: 'Fire station houses equipment' },
-        { entity: 'Incident', type: 'responds to', cardinality: '1:N', description: 'Fire station responds to incidents' }
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'assessed by', cardinality: 'N:1', description: 'Aviator assessed by ATSA' }
       ]
     },
-    'Incident': {
-      name: 'Incident',
-      icon: <ReceiptLongIcon />, // incident icon
+    'Air Traffic Skills Assessment (ATSA)': {
+      name: 'Air Traffic Skills Assessment (ATSA)',
+      icon: <StorageIcon />, // assessment icon if available
+      color: '#388e3c',
+      description: 'Assessment results and candidate tracking for air traffic controllers',
+      instances: 12890,
+      fields: [
+        { name: 'assessment_id', type: 'string', description: 'Unique identifier for assessment' },
+        { name: 'candidate_id', type: 'string', description: 'Candidate identifier' },
+        { name: 'score', type: 'number', description: 'Assessment score' }
+      ],
+      relationships: [
+        { entity: 'FAA AVIATOR System', type: 'assesses', cardinality: 'N:1', description: 'Assessment for aviator' },
+        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Assessment related to ATC Sectors' },
+        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Airspace data' },
+        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Near Misses and collisions' },
+        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Highway Safety Data' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Assessment related to FAA AMS' }
+      ]
+    },
+    'ATC Sector DB': {
+      name: 'ATC Sector DB',
+      icon: <StorageIcon />,
+      color: '#fbc02d',
+      description: 'Air Traffic Control Sectors Data',
+      instances: 23456,
+      fields: [
+        { name: 'sector_id', type: 'string', description: 'Unique identifier for sector' },
+        { name: 'location', type: 'string', description: 'Sector location' }
+      ],
+      relationships: [
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to ATSA' },
+        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Airspace data' },
+        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Near Misses and collisions' },
+        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Highway Safety Data' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to FAA AMS' }
+      ]
+    },
+    'NTSB: Airspace data': {
+      name: 'NTSB: Airspace data',
+      icon: <StorageIcon />,
+      color: '#8e24aa',
+      description: 'Airspace data',
+      instances: 15432,
+      fields: [
+        { name: 'airspace_id', type: 'string', description: 'Unique identifier for airspace' },
+        { name: 'region', type: 'string', description: 'Airspace region' }
+      ],
+      relationships: [
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to ATSA' },
+        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to ATC Sector DB' },
+        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to Near Misses and collisions' },
+        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to Highway Safety Data' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to FAA AMS' }
+      ]
+    },
+    'NTSB: Near Misses and collisions': {
+      name: 'NTSB: Near Misses and collisions',
+      icon: <StorageIcon />,
       color: '#e53935',
-      description: 'An emergency event responded to by the fire service.',
-      instances: 12000,
+      description: 'Near Misses and collisions',
+      instances: 9823,
       fields: [
-        { name: 'incident_id', type: 'string', description: 'Unique identifier for the incident' },
-        { name: 'type', type: 'enum', description: 'Type of incident (Fire, Rescue, Medical, etc.)' },
-        { name: 'date', type: 'date', description: 'Date and time of the incident' },
-        { name: 'location', type: 'string', description: 'Location of the incident' }
+        { name: 'event_id', type: 'string', description: 'Unique identifier for event' },
+        { name: 'type', type: 'string', description: 'Event type' }
       ],
       relationships: [
-        { entity: 'Fire Station', type: 'responded by', cardinality: 'N:1', description: 'Incident responded to by a fire station' },
-        { entity: 'Personnel', type: 'attended by', cardinality: 'N:N', description: 'Personnel attending the incident' },
-        { entity: 'Equipment', type: 'used', cardinality: 'N:N', description: 'Equipment used in the incident' }
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to ATSA' },
+        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to ATC Sector DB' },
+        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to Airspace data' },
+        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to Highway Safety Data' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to FAA AMS' }
       ]
     },
-    'Personnel': {
-      name: 'Personnel',
-      icon: <PersonIcon />, // personnel icon
-      color: '#43a047',
-      description: 'Firefighters and staff working at the fire service.',
-      instances: 1200,
-      fields: [
-        { name: 'personnel_id', type: 'string', description: 'Unique identifier for personnel' },
-        { name: 'name', type: 'string', description: 'Full name' },
-        { name: 'role', type: 'enum', description: 'Role (Firefighter, Officer, etc.)' },
-        { name: 'certifications', type: 'array', description: 'List of certifications' }
-      ],
-      relationships: [
-        { entity: 'Fire Station', type: 'assigned to', cardinality: 'N:1', description: 'Personnel assigned to a fire station' },
-        { entity: 'Incident', type: 'attends', cardinality: 'N:N', description: 'Personnel attend incidents' },
-        { entity: 'Training Record', type: 'has', cardinality: '1:N', description: 'Personnel have training records' }
-      ]
-    },
-    'Equipment': {
-      name: 'Equipment',
-      icon: <StorageIcon />, // equipment icon
-      color: '#fb8c00',
-      description: 'Vehicles and tools used by the fire service.',
-      instances: 500,
-      fields: [
-        { name: 'equipment_id', type: 'string', description: 'Unique identifier for equipment' },
-        { name: 'type', type: 'string', description: 'Type of equipment' },
-        { name: 'status', type: 'enum', description: 'Operational status' }
-      ],
-      relationships: [
-        { entity: 'Fire Station', type: 'located at', cardinality: 'N:1', description: 'Equipment located at a fire station' },
-        { entity: 'Incident', type: 'used in', cardinality: 'N:N', description: 'Equipment used in incidents' }
-      ]
-    },
-    'Training Record': {
-      name: 'Training Record',
-      icon: <LocalHospitalIcon />, // training record icon
+    'NTSB: Highway Safety Data': {
+      name: 'NTSB: Highway Safety Data',
+      icon: <StorageIcon />,
       color: '#3949ab',
-      description: 'Records of training completed by personnel.',
-      instances: 3000,
+      description: 'Highway Safety Data',
+      instances: 34567,
       fields: [
-        { name: 'training_id', type: 'string', description: 'Unique identifier for the training record' },
-        { name: 'personnel_id', type: 'string', description: 'Personnel who completed the training' },
-        { name: 'course', type: 'string', description: 'Training course name' },
-        { name: 'date_completed', type: 'date', description: 'Date training was completed' }
+        { name: 'record_id', type: 'string', description: 'Unique identifier for record' },
+        { name: 'state', type: 'string', description: 'State' }
       ],
       relationships: [
-        { entity: 'Personnel', type: 'belongs to', cardinality: 'N:1', description: 'Training record belongs to personnel' }
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to ATSA' },
+        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to ATC Sector DB' },
+        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to Airspace data' },
+        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to Near Misses and collisions' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to FAA AMS' }
       ]
     },
-    'Response Record': {
-      name: 'Response Record',
-      icon: <HubIcon />, // response record icon
-      color: '#00838f',
-      description: 'Detailed log of a fire service response to an incident.',
-      instances: 12000,
+    'FAA Acquisition Management System (AMS)': {
+      name: 'FAA Acquisition Management System (AMS)',
+      icon: <StorageIcon />,
+      color: '#ffa000',
+      description: 'Centralized procurement and contract management for FAA operations',
+      instances: 234567,
       fields: [
-        { name: 'response_id', type: 'string', description: 'Unique identifier for the response' },
-        { name: 'incident_id', type: 'string', description: 'Incident responded to' },
-        { name: 'personnel_ids', type: 'array', description: 'Personnel involved' },
-        { name: 'equipment_ids', type: 'array', description: 'Equipment used' }
+        { name: 'contract_id', type: 'string', description: 'Unique contract identifier' },
+        { name: 'vendor', type: 'string', description: 'Vendor name' }
       ],
       relationships: [
-        { entity: 'Incident', type: 'documents', cardinality: 'N:1', description: 'Response record documents an incident' },
-        { entity: 'Personnel', type: 'involves', cardinality: 'N:N', description: 'Response involves personnel' },
-        { entity: 'Equipment', type: 'involves', cardinality: 'N:N', description: 'Response involves equipment' }
+        { entity: 'System for Award Management (SAM)', type: 'references', cardinality: 'N:1', description: 'References SAM for vendor eligibility' },
+        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to ATSA' },
+        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to ATC Sector DB' },
+        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Airspace data' },
+        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Near Misses and collisions' },
+        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Highway Safety Data' },
+        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with PMS' },
+        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with SAM' },
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with NHTSA NAMS' },
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with NRAMS' }
       ]
+    },
+    'Proposal Management System (PMS)': {
+      name: 'Proposal Management System (PMS)',
+      icon: <StorageIcon />,
+      color: '#00838f',
+      description: 'Announced, created and funded proposals',
+      instances: 11234,
+      fields: [
+        { name: 'proposal_id', type: 'string', description: 'Unique proposal identifier' },
+        { name: 'status', type: 'string', description: 'Proposal status' }
+      ],
+      relationships: [
+        { entity: 'System for Award Management (SAM)', type: 'related to', cardinality: 'N:N', description: 'PMS related to SAM' },
+        { entity: 'SBIR Portal', type: 'related to', cardinality: 'N:N', description: 'PMS related to SBIR Portal' },
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with NHTSA NAMS' },
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with NRAMS' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with FAA AMS' }
+      ]
+    },
+    'System for Award Management (SAM)': {
+      name: 'System for Award Management (SAM)',
+      icon: <StorageIcon />,
+      color: '#9e9e9e',
+      description: 'Federal vendor registration and eligibility verification',
+      instances: 982345,
+      fields: [
+        { name: 'sam_id', type: 'string', description: 'SAM registration ID' },
+        { name: 'vendor', type: 'string', description: 'Vendor name' }
+      ],
+      relationships: [
+        { entity: 'Proposal Management System (PMS)', type: 'related to', cardinality: 'N:N', description: 'SAM related to PMS' },
+        { entity: 'SBIR Portal', type: 'related to', cardinality: 'N:N', description: 'SAM related to SBIR Portal' },
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with NHTSA NAMS' },
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with NRAMS' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with FAA AMS' }
+      ]
+    },
+    'SBIR Portal': {
+      name: 'SBIR Portal',
+      icon: <StorageIcon />,
+      color: '#43a047',
+      description: 'Small Business Innovation Research program management and submissions',
+      instances: 15432,
+      fields: [
+        { name: 'submission_id', type: 'string', description: 'Submission identifier' },
+        { name: 'business_name', type: 'string', description: 'Business name' }
+      ],
+      relationships: [
+        { entity: 'Proposal Management System (PMS)', type: 'related to', cardinality: 'N:N', description: 'SBIR Portal related to PMS' },
+        { entity: 'System for Award Management (SAM)', type: 'related to', cardinality: 'N:N', description: 'SBIR Portal related to SAM' }
+      ]
+    },
+    'NHTSA Acquisition Management System (NAMS)': {
+      name: 'NHTSA Acquisition Management System (NAMS)',
+      icon: <StorageIcon />,
+      color: '#fb8c00',
+      description: 'Centralized procurement and contract management',
+      instances: 22345,
+      fields: [
+        { name: 'contract_id', type: 'string', description: 'Contract identifier' },
+        { name: 'vendor', type: 'string', description: 'Vendor name' }
+      ],
+      relationships: [
+        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'NAMS related to CRMD' },
+        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'NAMS related to HPMS' },
+        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'NAMS related to NHTSA' },
+        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with PMS' },
+        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with SAM' },
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with NRAMS' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with FAA AMS' }
+      ]
+    },
+    'Continental Road Maintenance Data (CRMD)': {
+      name: 'Continental Road Maintenance Data (CRMD)',
+      icon: <StorageIcon />,
+      color: '#00897b',
+      description: 'Data covering road maintenance',
+      instances: 34567,
+      fields: [
+        { name: 'maintenance_id', type: 'string', description: 'Maintenance record ID' },
+        { name: 'road_segment', type: 'string', description: 'Road segment' }
+      ],
+      relationships: [
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'CRMD related to NAMS' },
+        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'CRMD related to HPMS' },
+        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'CRMD related to NHTSA' }
+      ]
+    },
+    'Highway Performance Monitoring System (HPMS)': {
+      name: 'Highway Performance Monitoring System (HPMS)',
+      icon: <StorageIcon />,
+      color: '#ffd600',
+      description: 'National highway data collection and performance metrics',
+      instances: 345678,
+      fields: [
+        { name: 'hpms_id', type: 'string', description: 'HPMS record ID' },
+        { name: 'state', type: 'string', description: 'State' }
+      ],
+      relationships: [
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'HPMS related to NAMS' },
+        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'HPMS related to CRMD' },
+        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'HPMS related to NHTSA' }
+      ]
+    },
+    'NHTSA': {
+      name: 'NHTSA',
+      icon: <StorageIcon />,
+      color: '#c62828',
+      description: 'Highway traffic data (for DOT extension)',
+      instances: 45678,
+      fields: [
+        { name: 'traffic_id', type: 'string', description: 'Traffic record ID' },
+        { name: 'location', type: 'string', description: 'Location' }
+      ],
+      relationships: [
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to NAMS' },
+        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to CRMD' },
+        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to HPMS' }
+      ]
+    },
+    'National Rail Acquisition Management System (NRAMS)': {
+      name: 'National Rail Acquisition Management System (NRAMS)',
+      icon: <StorageIcon />,
+      color: '#6d4c41',
+      description: 'Centralized procurement and contract management',
+      instances: 33456,
+      fields: [
+        { name: 'contract_id', type: 'string', description: 'Contract identifier' },
+        { name: 'vendor', type: 'string', description: 'Vendor name' }
+      ],
+      relationships: [
+        { entity: 'Rail Maintenance Data (RMD)', type: 'related to', cardinality: 'N:N', description: 'NRAMS related to RMD' },
+        { entity: 'Railway Monitoring System (RMS)', type: 'related to', cardinality: 'N:N', description: 'NRAMS related to RMS' },
+        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with PMS' },
+        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with SAM' },
+        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with NHTSA NAMS' },
+        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with FAA AMS' }
+      ]
+    },
+    'Rail Maintenance Data (RMD)': {
+      name: 'Rail Maintenance Data (RMD)',
+      icon: <StorageIcon />,
+      color: '#0277bd',
+      description: 'Data covering rail maintenance',
+      instances: 22345,
+      fields: [
+        { name: 'maintenance_id', type: 'string', description: 'Maintenance record ID' },
+        { name: 'rail_segment', type: 'string', description: 'Rail segment' }
+      ],
+      relationships: [
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'related to', cardinality: 'N:N', description: 'RMD related to NRAMS' },
+        { entity: 'Railway Monitoring System (RMS)', type: 'related to', cardinality: 'N:N', description: 'RMD related to RMS' }
+      ]
+    },
+    'Railway Monitoring System (RMS)': {
+      name: 'Railway Monitoring System (RMS)',
+      icon: <StorageIcon />,
+      color: '#00bcd4',
+      description: 'National highway data collection and performance metrics',
+      instances: 55678,
+      fields: [
+        { name: 'rms_id', type: 'string', description: 'RMS record ID' },
+        { name: 'region', type: 'string', description: 'Region' }
+      ],
+      relationships: [
+        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'related to', cardinality: 'N:N', description: 'RMS related to NRAMS' },
+        { entity: 'Rail Maintenance Data (RMD)', type: 'related to', cardinality: 'N:N', description: 'RMS related to RMD' }
+      ]
+    },
+    'Realtime Data': {
+      name: 'Realtime Data',
+      icon: <StorageIcon />,
+      color: '#0097a7',
+      description: 'Real-time Conditions (visibility, precipitation)',
+      instances: 123456,
+      fields: [
+        { name: 'realtime_id', type: 'string', description: 'Realtime record ID' },
+        { name: 'condition', type: 'string', description: 'Condition type' }
+      ],
+      relationships: []
+    },
+    'Forecast Data': {
+      name: 'Forecast Data',
+      icon: <StorageIcon />,
+      color: '#7e57c2',
+      description: 'Forecast, Weather Patterns (current & historicals)',
+      instances: 65432,
+      fields: [
+        { name: 'forecast_id', type: 'string', description: 'Forecast record ID' },
+        { name: 'date', type: 'date', description: 'Forecast date' }
+      ],
+      relationships: []
     }
   }
 };
