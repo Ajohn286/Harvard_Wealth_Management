@@ -59,68 +59,68 @@ const mockDataQualityMetrics = {
   ]
 };
 
-// Mock data for data quality issues
+// Mock data for data quality issues (SUPPLIER/DEPARTMENT CONTEXT)
 const mockDataQualityIssues = [
   {
-    id: 'DQ-001',
-    entity: 'Patient',
-    field: 'dateOfBirth',
-    rule: 'Date cannot be in the future',
-    severity: 'High',
-    count: 23,
+    id: 'DQ-101',
+    entity: 'Supplier',
+    field: 'contractValue',
+    rule: 'Contract value must be positive',
+    severity: 'Critical',
+    count: 5,
     status: 'Open',
-    trend: '-5%',
+    trend: '-10%',
     lastDetected: '2023-10-14T09:15:00Z'
   },
   {
-    id: 'DQ-002',
-    entity: 'Claim',
-    field: 'amount',
-    rule: 'Amount must be positive',
-    severity: 'Critical',
-    count: 7,
+    id: 'DQ-102',
+    entity: 'Supplier',
+    field: 'complianceStatus',
+    rule: 'Compliance status must be valid',
+    severity: 'High',
+    count: 12,
     status: 'In Progress',
-    trend: '-12%',
+    trend: '-3%',
     lastDetected: '2023-10-15T11:30:00Z'
   },
   {
-    id: 'DQ-003',
-    entity: 'Provider',
-    field: 'npi',
-    rule: 'NPI must be 10 digits',
+    id: 'DQ-103',
+    entity: 'Department',
+    field: 'departmentCode',
+    rule: 'Department code must be 3 uppercase letters',
     severity: 'Medium',
-    count: 15,
+    count: 7,
     status: 'Open',
-    trend: '+3%',
+    trend: '+2%',
     lastDetected: '2023-10-15T08:45:00Z'
   },
   {
-    id: 'DQ-004',
-    entity: 'Patient',
-    field: 'email',
+    id: 'DQ-104',
+    entity: 'Supplier',
+    field: 'supplierEmail',
     rule: 'Email must be valid format',
     severity: 'Low',
-    count: 42,
+    count: 18,
     status: 'Open',
-    trend: '-2%',
+    trend: '-1%',
     lastDetected: '2023-10-14T16:20:00Z'
   },
   {
-    id: 'DQ-005',
-    entity: 'Claim',
-    field: 'serviceDate',
-    rule: 'Service date must be before claim date',
+    id: 'DQ-105',
+    entity: 'Department',
+    field: 'budget',
+    rule: 'Budget must be greater than zero',
     severity: 'High',
-    count: 18,
+    count: 3,
     status: 'Resolved',
     trend: '-100%',
     lastDetected: '2023-10-13T14:10:00Z'
   },
   {
-    id: 'DQ-006',
-    entity: 'Payment',
-    field: 'paymentMethod',
-    rule: 'Payment method must be from allowed list',
+    id: 'DQ-106',
+    entity: 'Supplier',
+    field: 'supplierName',
+    rule: 'Supplier name must not be empty',
     severity: 'Medium',
     count: 9,
     status: 'In Progress',
@@ -143,13 +143,13 @@ const mockDataQualityTrends = {
   }
 };
 
-// Mock data for entity quality scores
+// Mock data for entity quality scores (SUPPLIER/DEPARTMENT CONTEXT)
 const mockEntityQualityScores = [
-  { entity: 'Patient', score: 91, issues: 65, criticalIssues: 2 },
-  { entity: 'Provider', score: 88, issues: 42, criticalIssues: 1 },
-  { entity: 'Claim', score: 84, issues: 78, criticalIssues: 5 },
-  { entity: 'Payment', score: 93, issues: 28, criticalIssues: 0 },
-  { entity: 'Policy', score: 89, issues: 35, criticalIssues: 1 }
+  { entity: 'Supplier', score: 91, issues: 28, criticalIssues: 1 },
+  { entity: 'Department', score: 88, issues: 17, criticalIssues: 0 },
+  { entity: 'Contract', score: 84, issues: 22, criticalIssues: 2 },
+  { entity: 'Compliance', score: 93, issues: 8, criticalIssues: 0 },
+  { entity: 'Project', score: 89, issues: 12, criticalIssues: 0 }
 ];
 
 const DataQualityView = () => {
@@ -403,11 +403,11 @@ const DataQualityView = () => {
                 onChange={(e) => setSelectedEntity(e.target.value)}
               >
                 <MenuItem value="All">All Entities</MenuItem>
-                <MenuItem value="Patient">Patient</MenuItem>
-                <MenuItem value="Provider">Provider</MenuItem>
-                <MenuItem value="Claim">Claim</MenuItem>
-                <MenuItem value="Payment">Payment</MenuItem>
-                <MenuItem value="Policy">Policy</MenuItem>
+                <MenuItem value="Supplier">Supplier</MenuItem>
+                <MenuItem value="Department">Department</MenuItem>
+                <MenuItem value="Contract">Contract</MenuItem>
+                <MenuItem value="Compliance">Compliance</MenuItem>
+                <MenuItem value="Project">Project</MenuItem>
               </Select>
             </FormControl>
             <FormControl size="small" sx={{ minWidth: 120 }}>
