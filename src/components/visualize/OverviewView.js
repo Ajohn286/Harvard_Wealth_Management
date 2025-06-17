@@ -32,176 +32,164 @@ export default function OverviewView() {
   // Data sources
   const dataSources = [
     {
-      name: 'FAA AVIATOR System',
-      description: 'Aviation workforce credentialing and training records',
+      name: 'Portfolio Management System',
+      description: 'Central system for managing private equity portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 45231,
       icon: <StorageIcon />
     },
     {
-      name: 'Air Traffic Skills Assessment (ATSA)',
-      description: 'Assessment results and candidate tracking for air traffic controllers',
+      name: 'Investment Analytics Platform',
+      description: 'Advanced analytics and performance tracking for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 12890,
       icon: <StorageIcon />
     },
     {
-      name: 'ATC Sector DB',
-      description: 'Air Traffic Control Sectors Data',
+      name: 'Risk Management Database',
+      description: 'Risk assessment and monitoring for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 23456,
       icon: <StorageIcon />
     },
     {
-      name: 'NTSB: Airspace data',
-      description: 'Airspace data',
+      name: 'Portco Performance Metrics',
+      description: 'Key performance indicators and metrics for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 15432,
       icon: <StorageIcon />
     },
     {
-      name: 'NTSB: Near Misses and collisions',
-      description: 'Near Misses and collisions',
+      name: 'Portco Financial Data',
+      description: 'Financial statements and metrics for portfolio companies',
       connectionStatus: 'Needs Attention',
       healthStatus: 'amber',
       recordCount: 9823,
       icon: <StorageIcon />
     },
     {
-      name: 'NTSB: Highway Safety Data',
-      description: 'Highway Safety Data',
+      name: 'Portco Operational Data',
+      description: 'Operational metrics and KPIs for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 34567,
       icon: <StorageIcon />
     },
     {
-      name: 'FAA Acquisition Management System (AMS)',
-      description: 'Centralized procurement and contract management for FAA operations',
+      name: 'Deal Flow Management System',
+      description: 'Pipeline and deal tracking for potential investments',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 234567,
       icon: <StorageIcon />
     },
     {
-      name: 'Proposal Management System (PMS)',
-      description: 'Announced, created and funded proposals',
+      name: 'Due Diligence Repository',
+      description: 'Due diligence documents and analysis for potential investments',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 11234,
       icon: <StorageIcon />
     },
     {
-      name: 'System for Award Management (SAM)',
-      description: 'Federal vendor registration and eligibility verification',
+      name: 'LP Reporting Portal',
+      description: 'Limited Partner reporting and communications platform',
       connectionStatus: 'Needs Attention',
       healthStatus: 'amber',
       recordCount: 982345,
       icon: <StorageIcon />
     },
     {
-      name: 'SBIR Portal',
-      description: 'Small Business Innovation Research program management and submissions',
+      name: 'Compliance Monitoring System',
+      description: 'Regulatory compliance and monitoring for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 15432,
       icon: <StorageIcon />
     },
     {
-      name: 'NHTSA Acquisition Management System (NAMS)',
-      description: 'Centralized procurement and contract management',
+      name: 'Market Intelligence Platform',
+      description: 'Market research and competitive analysis tools',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 22345,
       icon: <StorageIcon />
     },
     {
-      name: 'Continental Road Maintenance Data (CRMD)',
-      description: 'Data covering road maintenance',
+      name: 'Portco Valuation Models',
+      description: 'Financial models and valuation tools for portfolio companies',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 34567,
       icon: <StorageIcon />
     },
     {
-      name: 'Highway Performance Monitoring System (HPMS)',
-      description: 'National highway data collection and performance metrics',
+      name: 'Portco ESG Metrics',
+      description: 'Environmental, Social, and Governance metrics tracking',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 345678,
       icon: <StorageIcon />
     },
     {
-      name: 'NHTSA',
-      description: 'Highway traffic data (for DOT extension)',
+      name: 'Portco Growth Analytics',
+      description: 'Growth metrics and market expansion analysis',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 45678,
       icon: <StorageIcon />
     },
     {
-      name: 'National Rail Acquisition Management System (NRAMS)',
-      description: 'Centralized procurement and contract management',
+      name: 'Portco Integration Tracking',
+      description: 'Post-acquisition integration progress monitoring',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 33456,
       icon: <StorageIcon />
     },
     {
-      name: 'Rail Maintenance Data (RMD)',
-      description: 'Data covering rail maintenance',
+      name: 'Portco Exit Planning',
+      description: 'Exit strategy and divestiture planning tools',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 22345,
       icon: <StorageIcon />
     },
     {
-      name: 'Railway Monitoring System (RMS)',
-      description: 'National highway data collection and performance metrics',
+      name: 'Real-time Market Data',
+      description: 'Real-time market data and financial indicators',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 55678,
       icon: <StorageIcon />
     },
     {
-      name: 'Realtime Data',
-      description: 'Real-time Conditions (visibility, precipitation)',
+      name: 'Forecast Models',
+      description: 'Financial forecasting and scenario analysis tools',
       connectionStatus: 'Healthy',
       healthStatus: 'green',
       recordCount: 123456,
-      icon: <StorageIcon />
-    },
-    {
-      name: 'Forecast Data',
-      description: 'Forecast, Weather Patterns (current & historicals)',
-      connectionStatus: 'Healthy',
-      healthStatus: 'green',
-      recordCount: 65432,
       icon: <StorageIcon />
     }
   ];
 
   // Data quality rules
   const bronzeRules = [
-    { name: 'Timeliness Check', status: 'Active', type: 'System', progress: 100 },
-    { name: 'Completeness Validation', status: 'Active', type: 'System', progress: 100 },
-    { name: 'File Format Check', status: 'Active', type: 'System', progress: 100 },
-    { name: 'Schema Validation', status: 'In Progress', type: 'System', progress: 72 }
+    { name: 'Financial Data Timeliness', status: 'Active', type: 'System', progress: 100 },
+    { name: 'Portco Data Completeness', status: 'Active', type: 'System', progress: 100 },
+    { name: 'Financial Statement Format', status: 'Active', type: 'System', progress: 100 },
+    { name: 'Valuation Model Validation', status: 'In Progress', type: 'System', progress: 72 }
   ];
 
   const silverRules = [
-    { name: 'Name Standardization', status: 'Active', type: 'Business', progress: 100 },
-    { name: 'Address Validation', status: 'Active', type: 'Business', progress: 100 },
-    { name: 'Policy Date Format Check', status: 'Active', type: 'Business', progress: 100 },
-    { name: 'Customer ID Validation', status: 'In Progress', type: 'Business', progress: 85 },
-    { name: 'Email Format Validation', status: 'Active', type: 'Business', progress: 100 },
-    { name: 'Gender Code Standardization', status: 'In Progress', type: 'Business', progress: 58 },
-    { name: 'Claim Amount Range Check', status: 'Active', type: 'Business', progress: 100 },
-    { name: 'Duplicate Detection', status: 'In Progress', type: 'System', progress: 85 }
+    { name: 'Company Name Standardization', status: 'Active', type: 'Business', progress: 100 },
+    { name: 'Financial Metric Validation', status: 'Active', type: 'Business', progress: 100 },
+    { name: 'Investment Date Format Check', status: 'Active', type: 'Business', progress: 100 },
+    { name: 'Portco ID Validation', status: 'In Progress', type: 'Business', progress: 85 }
   ];
 
   const goldRules = [

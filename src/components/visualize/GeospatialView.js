@@ -42,69 +42,67 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 
-// Mock data for West Midlands Fire Service geospatial visualization
+// Mock data for Wealth Management and Private Equity geospatial visualization
 const mockGeospatialData = {
-  regions: ['Birmingham', 'Coventry', 'Wolverhampton', 'Dudley', 'Sandwell', 'Solihull', 'Walsall', 'West Bromwich'],
-  mapTypes: ['Incident Density', 'Station Coverage', 'Incident Risk', 'Resource Network', 'Major Incident Tracking'],
-  metrics: ['Incident Count', 'Incident Severity', 'Response Time', 'Coverage Area', 'Risk Score'],
-  incidentTypes: ['Fire', 'Rescue', 'Medical', 'RTC', 'False Alarm', 'Hazmat', 'Other'],
-  fireStations: [
+  regions: ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Middle East', 'Africa'],
+  mapTypes: ['Portfolio Distribution', 'Investment Density', 'Risk Exposure', 'Market Coverage', 'ESG Impact'],
+  metrics: ['Investment Value', 'Portfolio Size', 'Market Share', 'Risk Score', 'ESG Rating'],
+  investmentTypes: ['Private Equity', 'Venture Capital', 'Growth Equity', 'Real Estate', 'Infrastructure', 'ESG', 'Other'],
+  portfolioOffices: [
     {
       id: 1,
-      name: 'Birmingham Central Fire Station',
-      address: 'Lancaster Circus, Birmingham B4 6NF',
-      coordinates: { lat: 52.4862, lng: -1.8904 },
-      incidentCount: 1243,
-      avgResponseTime: 6.2,
+      name: 'Bain Capital - Boston HQ',
+      address: '200 Clarendon Street, Boston, MA 02116',
+      coordinates: { lat: 42.3500, lng: -71.0780 },
+      portfolioCount: 1243,
+      avgInvestmentSize: 250000000,
       riskScore: 82,
-      region: 'Birmingham',
-      recentIncidents: [
-        { id: 'INC-2024-001', type: 'Fire', severity: 'High', status: 'Resolved', date: '2024-06-01', location: 'Jewellery Quarter' },
-        { id: 'INC-2024-002', type: 'RTC', severity: 'Medium', status: 'Resolved', date: '2024-05-28', location: 'A38(M) Expressway' },
-        { id: 'INC-2024-003', type: 'False Alarm', severity: 'Low', status: 'False Alarm', date: '2024-05-25', location: 'Digbeth' },
-        { id: 'INC-2024-004', type: 'Medical', severity: 'Medium', status: 'Resolved', date: '2024-05-22', location: 'City Centre' }
+      region: 'North America',
+      recentInvestments: [
+        { id: 'INV-2024-001', type: 'Private Equity', value: 'High', status: 'Active', date: '2024-06-01', company: 'Tech Innovators Inc.' },
+        { id: 'INV-2024-002', type: 'Venture Capital', value: 'Medium', status: 'Active', date: '2024-05-28', company: 'AI Solutions Ltd.' },
+        { id: 'INV-2024-003', type: 'Growth Equity', value: 'High', status: 'Pending', date: '2024-05-25', company: 'Green Energy Corp' },
+        { id: 'INV-2024-004', type: 'Real Estate', value: 'Medium', status: 'Active', date: '2024-05-22', company: 'Urban Development LLC' }
       ]
     },
     {
       id: 2,
-      name: 'Coventry Fire Station',
-      address: 'Radford Road, Coventry CV1 4EL',
-      coordinates: { lat: 52.4143, lng: -1.5144 },
-      incidentCount: 978,
-      avgResponseTime: 7.1,
+      name: 'Sequoia Capital - Menlo Park',
+      address: '2800 Sand Hill Road, Menlo Park, CA 94025',
+      coordinates: { lat: 37.4275, lng: -122.1697 },
+      portfolioCount: 978,
+      avgInvestmentSize: 180000000,
       riskScore: 75,
-      region: 'Coventry',
-      recentIncidents: [
-        { id: 'INC-2024-005', type: 'Fire', severity: 'Medium', status: 'Resolved', date: '2024-05-30', location: 'Earlsdon' },
-        { id: 'INC-2024-006', type: 'Rescue', severity: 'High', status: 'Resolved', date: '2024-05-27', location: 'Canley' },
-        { id: 'INC-2024-007', type: 'Hazmat', severity: 'High', status: 'Resolved', date: '2024-05-20', location: 'Whitley' },
-        { id: 'INC-2024-008', type: 'False Alarm', severity: 'Low', status: 'False Alarm', date: '2024-05-18', location: 'Tile Hill' }
+      region: 'North America',
+      recentInvestments: [
+        { id: 'INV-2024-005', type: 'Venture Capital', value: 'High', status: 'Active', date: '2024-05-30', company: 'CloudTech Solutions' },
+        { id: 'INV-2024-006', type: 'Private Equity', value: 'High', status: 'Active', date: '2024-05-27', company: 'Healthcare Plus' },
+        { id: 'INV-2024-007', type: 'Growth Equity', value: 'High', status: 'Active', date: '2024-05-20', company: 'FinTech Innovations' },
+        { id: 'INV-2024-008', type: 'ESG', value: 'Medium', status: 'Pending', date: '2024-05-18', company: 'Sustainable Energy Co' }
       ]
     },
     {
       id: 3,
-      name: 'Wolverhampton Fire Station',
-      address: 'Merridale St, Wolverhampton WV3 0RE',
-      coordinates: { lat: 52.5857, lng: -2.1331 },
-      incidentCount: 832,
-      avgResponseTime: 6.8,
+      name: 'General Atlantic - London',
+      address: '20 St James\'s Street, London SW1A 1ES',
+      coordinates: { lat: 51.5074, lng: -0.1378 },
+      portfolioCount: 832,
+      avgInvestmentSize: 300000000,
       riskScore: 68,
-      region: 'Wolverhampton',
-      recentIncidents: [
-        { id: 'INC-2024-009', type: 'Fire', severity: 'High', status: 'Resolved', date: '2024-05-29', location: 'Penn Fields' },
-        { id: 'INC-2024-010', type: 'RTC', severity: 'Medium', status: 'Resolved', date: '2024-05-26', location: 'Tettenhall' },
-        { id: 'INC-2024-011', type: 'Medical', severity: 'Low', status: 'Resolved', date: '2024-05-23', location: 'Heath Town' },
-        { id: 'INC-2024-012', type: 'Other', severity: 'Low', status: 'Resolved', date: '2024-05-19', location: 'Wednesfield' }
+      region: 'Europe',
+      recentInvestments: [
+        { id: 'INV-2024-009', type: 'Private Equity', value: 'High', status: 'Active', date: '2024-05-29', company: 'European Retail Group' },
+        { id: 'INV-2024-010', type: 'Infrastructure', value: 'Medium', status: 'Active', date: '2024-05-26', company: 'Transport Solutions' },
+        { id: 'INV-2024-011', type: 'Real Estate', value: 'Low', status: 'Active', date: '2024-05-23', company: 'Property Development Ltd' },
+        { id: 'INV-2024-012', type: 'ESG', value: 'Medium', status: 'Active', date: '2024-05-19', company: 'Green Infrastructure Co' }
       ]
     }
-    // ... add more stations as needed
   ],
-  incidentHotspots: [
-    { id: 1, location: 'Birmingham City Centre', coordinates: { lat: 52.4786, lng: -1.9086 }, incidentIntensity: 91, incidentType: 'Fire', affectedPeople: 120, totalIncidents: 340, incidentDate: '2024-05-15' },
-    { id: 2, location: 'Coventry Ring Road', coordinates: { lat: 52.4068, lng: -1.5197 }, incidentIntensity: 78, incidentType: 'RTC', affectedPeople: 45, totalIncidents: 110, incidentDate: '2024-05-10' },
-    { id: 3, location: 'Wolverhampton Market', coordinates: { lat: 52.5871, lng: -2.1256 }, incidentIntensity: 65, incidentType: 'Rescue', affectedPeople: 30, totalIncidents: 75, incidentDate: '2024-05-05' },
-    { id: 4, location: 'Dudley High Street', coordinates: { lat: 52.5123, lng: -2.0815 }, incidentIntensity: 72, incidentType: 'Fire', affectedPeople: 60, totalIncidents: 150, incidentDate: '2024-05-12' }
-    // ... add more hotspots as needed
+  investmentHotspots: [
+    { id: 1, location: 'Silicon Valley', coordinates: { lat: 37.3875, lng: -122.0575 }, investmentIntensity: 91, investmentType: 'Venture Capital', portfolioCompanies: 120, totalInvestments: 340, investmentDate: '2024-05-15' },
+    { id: 2, location: 'London Tech Hub', coordinates: { lat: 51.5074, lng: -0.1278 }, investmentIntensity: 78, investmentType: 'Private Equity', portfolioCompanies: 45, totalInvestments: 110, investmentDate: '2024-05-10' },
+    { id: 3, location: 'Singapore Financial District', coordinates: { lat: 1.2847, lng: 103.8519 }, investmentIntensity: 65, investmentType: 'Growth Equity', portfolioCompanies: 30, totalInvestments: 75, investmentDate: '2024-05-05' },
+    { id: 4, location: 'Dubai International Financial Centre', coordinates: { lat: 25.2048, lng: 55.2708 }, investmentIntensity: 72, investmentType: 'Real Estate', portfolioCompanies: 60, totalInvestments: 150, investmentDate: '2024-05-12' }
   ]
 };
 
@@ -247,10 +245,10 @@ const MapComponent = ({
     
     // Filter fire stations based on incident type if needed
     const filteredFireStations = selectedIncidentType === 'All Types' 
-      ? mockGeospatialData.fireStations
-      : mockGeospatialData.fireStations.filter(fireStation => 
-          fireStation.recentIncidents.some(incident => 
-            incident.type.toLowerCase().includes(selectedIncidentType.toLowerCase())
+      ? mockGeospatialData.portfolioOffices
+      : mockGeospatialData.portfolioOffices.filter(fireStation => 
+          fireStation.recentInvestments.some(investment => 
+            investment.type.toLowerCase().includes(selectedIncidentType.toLowerCase())
           )
         );
     
@@ -289,22 +287,22 @@ const MapComponent = ({
     if (showHotspots) {
       // Filter hotspots based on incident type
       const filteredHotspots = selectedIncidentType === 'All Types'
-        ? mockGeospatialData.incidentHotspots
-        : mockGeospatialData.incidentHotspots.filter(hotspot => 
-            hotspot.incidentType.toLowerCase().includes(selectedIncidentType.toLowerCase())
+        ? mockGeospatialData.investmentHotspots
+        : mockGeospatialData.investmentHotspots.filter(hotspot => 
+            hotspot.investmentType.toLowerCase().includes(selectedIncidentType.toLowerCase())
           );
           
       filteredHotspots.forEach(hotspot => {
         const isSelected = selectedHotspot && selectedHotspot.id === hotspot.id;
-        const icon = createHotspotIcon(hotspot.incidentIntensity, isSelected);
+        const icon = createHotspotIcon(hotspot.investmentIntensity, isSelected);
         
         // Add circle to represent intensity
         const circle = L.circle([hotspot.coordinates.lat, hotspot.coordinates.lng], {
-          radius: hotspot.incidentIntensity * 5000, // Scale radius by intensity
-          fillColor: `rgba(255, ${255 - hotspot.incidentIntensity * 2}, 0, 0.3)`,
+          radius: hotspot.investmentIntensity * 5000, // Scale radius by intensity
+          fillColor: `rgba(255, ${255 - hotspot.investmentIntensity * 2}, 0, 0.3)`,
           fillOpacity: 0.3,
           stroke: true,
-          color: `rgba(255, ${255 - hotspot.incidentIntensity * 2}, 0, 0.7)`,
+          color: `rgba(255, ${255 - hotspot.investmentIntensity * 2}, 0, 0.7)`,
           weight: 1
         }).addTo(map);
         
@@ -314,7 +312,7 @@ const MapComponent = ({
         }).addTo(map);
         
         // Add tooltip
-        marker.bindTooltip(`${hotspot.location} - ${hotspot.incidentType}`, {
+        marker.bindTooltip(`${hotspot.location} - ${hotspot.investmentType}`, {
           permanent: false,
           direction: 'top',
           offset: [0, -10]
@@ -369,9 +367,9 @@ const MapComponent = ({
     // If showing risk assessment, add heatmap
     if (selectedMapType === 'Incident Risk') {
       // Simple representation - this would be more sophisticated in a real implementation
-      mockGeospatialData.incidentHotspots.forEach(hotspot => {
+      mockGeospatialData.investmentHotspots.forEach(hotspot => {
         L.circle([hotspot.coordinates.lat, hotspot.coordinates.lng], {
-          radius: hotspot.incidentIntensity * 8000, // Scale radius by intensity
+          radius: hotspot.investmentIntensity * 8000, // Scale radius by intensity
           fillColor: '#ff5722',
           fillOpacity: 0.2,
           stroke: false
@@ -472,9 +470,9 @@ export default function GeospatialView() {
   const getMetricValue = (fireStation, metric) => {
     switch(metric) {
       case 'Incident Count':
-        return fireStation.incidentCount.toLocaleString();
+        return fireStation.portfolioCount.toLocaleString();
       case 'Response Time':
-        return fireStation.avgResponseTime.toFixed(2);
+        return fireStation.avgInvestmentSize.toLocaleString();
       case 'Risk Score':
         return fireStation.riskScore;
       default:
@@ -523,7 +521,7 @@ export default function GeospatialView() {
                 size="small"
               >
                 <MenuItem value="All Types">All Types</MenuItem>
-                {mockGeospatialData.incidentTypes.map(type => (
+                {mockGeospatialData.investmentTypes.map(type => (
                   <MenuItem key={type} value={type}>{type}</MenuItem>
                 ))}
               </Select>
@@ -681,19 +679,19 @@ export default function GeospatialView() {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="caption" color="text.secondary">Incident Count</Typography>
-                    <Typography variant="subtitle2">{selectedFireStation.incidentCount.toLocaleString()}</Typography>
+                    <Typography variant="subtitle2">{selectedFireStation.portfolioCount.toLocaleString()}</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="caption" color="text.secondary">Response Time</Typography>
-                    <Typography variant="subtitle2">{selectedFireStation.avgResponseTime.toFixed(2)} minutes</Typography>
+                    <Typography variant="subtitle2">{selectedFireStation.avgInvestmentSize.toLocaleString()}</Typography>
                   </Grid>
                 </Grid>
                 
                 <Typography variant="subtitle2" gutterBottom>
-                  Recent Incidents
+                  Recent Investments
                 </Typography>
                 <List dense disablePadding>
-                  {selectedFireStation.recentIncidents.map((incident, idx) => (
+                  {selectedFireStation.recentInvestments.map((investment, idx) => (
                     <ListItem key={idx} disablePadding sx={{ py: 0.5 }}>
                       <ListItemIcon sx={{ minWidth: 30 }}>
                         <Chip 
@@ -703,8 +701,8 @@ export default function GeospatialView() {
                         />
                       </ListItemIcon>
                       <ListItemText 
-                        primary={`${incident.id} - ${incident.type}`}
-                        secondary={`${incident.severity} • ${incident.status} • ${incident.date}`}
+                        primary={`${investment.id} - ${investment.type}`}
+                        secondary={`${investment.value} • ${investment.status} • ${investment.date}`}
                         primaryTypographyProps={{ variant: 'body2' }}
                         secondaryTypographyProps={{ variant: 'caption' }}
                       />
@@ -719,7 +717,7 @@ export default function GeospatialView() {
                 </Typography>
                 <Typography variant="h6" color="error">{selectedHotspot.location}</Typography>
                 <Chip 
-                  label={selectedHotspot.incidentType} 
+                  label={selectedHotspot.investmentType} 
                   color="error" 
                   size="small" 
                   sx={{ mt: 1 }} 
@@ -730,24 +728,24 @@ export default function GeospatialView() {
                 <Grid container spacing={1} sx={{ mb: 2 }}>
                   <Grid item xs={6}>
                     <Typography variant="caption" color="text.secondary">Incident Date</Typography>
-                    <Typography variant="subtitle2">{selectedHotspot.incidentDate}</Typography>
+                    <Typography variant="subtitle2">{selectedHotspot.investmentDate}</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="caption" color="text.secondary">Intensity</Typography>
-                    <Typography variant="subtitle2">{selectedHotspot.incidentIntensity}%</Typography>
+                    <Typography variant="subtitle2">{selectedHotspot.investmentIntensity}%</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="caption" color="text.secondary">Affected People</Typography>
-                    <Typography variant="subtitle2">{selectedHotspot.affectedPeople.toLocaleString()}</Typography>
+                    <Typography variant="subtitle2">{selectedHotspot.portfolioCompanies.toLocaleString()}</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography variant="caption" color="text.secondary">Total Incidents</Typography>
-                    <Typography variant="subtitle2">{selectedHotspot.totalIncidents.toLocaleString()}</Typography>
+                    <Typography variant="caption" color="text.secondary">Total Investments</Typography>
+                    <Typography variant="subtitle2">{selectedHotspot.totalInvestments.toLocaleString()}</Typography>
                   </Grid>
                 </Grid>
                 
                 <Typography variant="body2" paragraph>
-                  This area experienced a significant {selectedHotspot.incidentType.toLowerCase()} event on {selectedHotspot.incidentDate}, affecting {selectedHotspot.affectedPeople} people across multiple fire stations. Total incidents reached {selectedHotspot.totalIncidents.toLocaleString()}.
+                  This area experienced a significant {selectedHotspot.investmentType.toLowerCase()} event on {selectedHotspot.investmentDate}, affecting {selectedHotspot.portfolioCompanies} companies across multiple fire stations. Total investments reached {selectedHotspot.totalInvestments.toLocaleString()}.
                 </Typography>
                 
                 <Button variant="outlined" size="small" fullWidth>

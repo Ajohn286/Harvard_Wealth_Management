@@ -1,4 +1,4 @@
-// File: /Users/jason/repos/Invisible/data-platform-dot-demo/src/app/layout.js
+// File: /Users/austinjohnson/Documents/DEMOS/data-platform-dot-demo/src/app/layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

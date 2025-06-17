@@ -33,17 +33,17 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-// Mock process flow data for claims processing
+// Mock process flow data for investment management
 const processFlowData = {
-  flowTypes: ['Claims Processing', 'Customer Onboarding', 'Order Fulfillment'],
+  flowTypes: ['Deal Flow Process', 'Portco Integration', 'Exit Strategy'],
   claimsFlow: {
-    name: 'Claims Processing',
-    description: 'End-to-end flow of an insurance claim from submission to payment',
+    name: 'Deal Flow Process',
+    description: 'End-to-end flow of an investment opportunity from sourcing to closing',
     steps: [
       {
-        id: 'claim_submission',
-        name: 'Claim Submission',
-        description: 'Patient or provider submits a claim',
+        id: 'deal_sourcing',
+        name: 'Deal Sourcing',
+        description: 'Initial identification and screening of investment opportunities',
         icon: <PersonIcon />,
         status: 'completed',
         timestamp: '2023-10-15 09:15:32',
@@ -56,25 +56,25 @@ const processFlowData = {
         dataCompleteness: {
           percentage: 92,
           missingElements: [
-            { field: 'Secondary Diagnosis', count: 145, impact: 'Medium' },
-            { field: 'Referring Provider', count: 78, impact: 'Low' }
+            { field: 'Market Analysis', count: 145, impact: 'Medium' },
+            { field: 'Competitive Landscape', count: 78, impact: 'Low' }
           ],
-          requiredFields: ['Patient ID', 'Date of Service', 'Procedure Code', 'Diagnosis', 'Provider ID'],
-          completedFields: ['Patient ID', 'Date of Service', 'Procedure Code', 'Diagnosis', 'Provider ID'],
-          optionalFields: ['Secondary Diagnosis', 'Referring Provider', 'Additional Notes']
+          requiredFields: ['Company ID', 'Deal Date', 'Industry Code', 'Financials', 'Management Team'],
+          completedFields: ['Company ID', 'Deal Date', 'Industry Code', 'Financials', 'Management Team'],
+          optionalFields: ['Market Analysis', 'Competitive Landscape', 'Additional Notes']
         },
         entities: [
-          { type: 'Person', id: 'PT12345', name: 'John Smith' },
-          { type: 'Provider', id: 'PR54321', name: 'General Hospital' }
+          { type: 'Company', id: 'CO12345', name: 'Tech Innovators Inc' },
+          { type: 'Deal', id: 'DL54321', value: '$50M' }
         ],
         documents: [
-          { name: 'Claim Form', id: 'DOC-001', size: '2.3 MB' }
+          { name: 'Deal Memo', id: 'DOC-001', size: '2.3 MB' }
         ]
       },
       {
-        id: 'claim_validation',
-        name: 'Claim Validation',
-        description: 'Verify claim information and patient eligibility',
+        id: 'due_diligence',
+        name: 'Due Diligence',
+        description: 'Comprehensive analysis of investment opportunity',
         icon: <ReceiptLongIcon />,
         status: 'completed',
         timestamp: '2023-10-15 09:25:45',
@@ -87,26 +87,26 @@ const processFlowData = {
         dataCompleteness: {
           percentage: 78,
           missingElements: [
-            { field: 'Prior Authorization', count: 245, impact: 'High' },
-            { field: 'Coordination of Benefits', count: 189, impact: 'Medium' },
-            { field: 'Service Location', count: 115, impact: 'Low' }
+            { field: 'Legal Review', count: 245, impact: 'High' },
+            { field: 'Financial Projections', count: 189, impact: 'Medium' },
+            { field: 'Market Size', count: 115, impact: 'Low' }
           ],
-          requiredFields: ['Member ID', 'Eligibility Date', 'Policy Status', 'Prior Authorization', 'Benefits Summary'],
-          completedFields: ['Member ID', 'Eligibility Date', 'Policy Status', 'Benefits Summary'],
-          optionalFields: ['Coordination of Benefits', 'Service Location', 'Group Number']
+          requiredFields: ['Financial Statements', 'Legal Documents', 'Market Analysis', 'Management Background', 'Risk Assessment'],
+          completedFields: ['Financial Statements', 'Legal Documents', 'Management Background'],
+          optionalFields: ['Financial Projections', 'Market Size', 'Competitive Analysis']
         },
         entities: [
-          { type: 'Person', id: 'PT12345', name: 'John Smith' },
-          { type: 'Claim', id: 'CL67890', amount: '$350.00' }
+          { type: 'Company', id: 'CO12345', name: 'Tech Innovators Inc' },
+          { type: 'Deal', id: 'DL54321', value: '$50M' }
         ],
         issues: [
-          { type: 'warning', message: 'Missing procedure code', count: 2 }
+          { type: 'warning', message: 'Missing financial projections', count: 2 }
         ]
       },
       {
-        id: 'provider_verification',
-        name: 'Provider Verification',
-        description: 'Verify provider credentials and network status',
+        id: 'investment_committee',
+        name: 'Investment Committee Review',
+        description: 'Review and approval by investment committee',
         icon: <LocalHospitalIcon />,
         status: 'completed',
         timestamp: '2023-10-15 09:45:22',
@@ -119,22 +119,22 @@ const processFlowData = {
         dataCompleteness: {
           percentage: 85,
           missingElements: [
-            { field: 'Specialty Certification', count: 126, impact: 'Medium' },
-            { field: 'Contract Terms', count: 42, impact: 'High' }
+            { field: 'Committee Notes', count: 126, impact: 'Medium' },
+            { field: 'Approval Status', count: 42, impact: 'High' }
           ],
-          requiredFields: ['Provider NPI', 'Network Status', 'Contract Terms', 'Specialty', 'License Status'],
-          completedFields: ['Provider NPI', 'Network Status', 'Specialty', 'License Status'],
-          optionalFields: ['Specialty Certification', 'Practice Address', 'Provider Group']
+          requiredFields: ['Committee Members', 'Voting Record', 'Approval Status', 'Investment Terms', 'Risk Assessment'],
+          completedFields: ['Committee Members', 'Voting Record', 'Investment Terms', 'Risk Assessment'],
+          optionalFields: ['Committee Notes', 'Follow-up Actions', 'Timeline']
         },
         entities: [
-          { type: 'Provider', id: 'PR54321', name: 'General Hospital' },
-          { type: 'Claim', id: 'CL67890', amount: '$350.00' }
+          { type: 'Deal', id: 'DL54321', value: '$50M' },
+          { type: 'Committee', id: 'IC98765', name: 'Investment Committee' }
         ]
       },
       {
-        id: 'claim_adjudication',
-        name: 'Claim Adjudication',
-        description: 'Evaluate the claim against policy coverage',
+        id: 'deal_negotiation',
+        name: 'Deal Negotiation',
+        description: 'Finalize terms and conditions of investment',
         icon: <ReceiptLongIcon />,
         status: 'in_progress',
         timestamp: '2023-10-15 10:15:30',
@@ -147,27 +147,27 @@ const processFlowData = {
         dataCompleteness: {
           percentage: 62,
           missingElements: [
-            { field: 'Covered Services Rules', count: 324, impact: 'Critical' },
-            { field: 'Member Benefit Details', count: 217, impact: 'High' },
-            { field: 'Provider Payment Schedule', count: 185, impact: 'High' },
-            { field: 'Authorization Rules', count: 156, impact: 'Medium' }
+            { field: 'Term Sheet', count: 324, impact: 'Critical' },
+            { field: 'Valuation Model', count: 217, impact: 'High' },
+            { field: 'Investment Structure', count: 185, impact: 'High' },
+            { field: 'Exit Strategy', count: 156, impact: 'Medium' }
           ],
-          requiredFields: ['Covered Services Rules', 'Member Benefit Details', 'Provider Payment Schedule', 'Authorization Rules', 'Claim Type Rules'],
-          completedFields: ['Claim Type Rules'],
-          optionalFields: ['Override Rules', 'Special Case Handling', 'Secondary Payer Logic']
+          requiredFields: ['Term Sheet', 'Valuation Model', 'Investment Structure', 'Exit Strategy', 'Governance Terms'],
+          completedFields: ['Governance Terms'],
+          optionalFields: ['Additional Clauses', 'Special Conditions', 'Milestone Payments']
         },
         entities: [
-          { type: 'Claim', id: 'CL67890', amount: '$350.00' },
-          { type: 'Policy', id: 'POL98765', type: 'Health Insurance' }
+          { type: 'Deal', id: 'DL54321', value: '$50M' },
+          { type: 'Term Sheet', id: 'TS98765', status: 'Draft' }
         ],
         issues: [
-          { type: 'error', message: 'Procedure not covered by policy', count: 1 }
+          { type: 'error', message: 'Valuation not agreed', count: 1 }
         ]
       },
       {
-        id: 'payment_processing',
-        name: 'Payment Processing',
-        description: 'Process payment for approved claims',
+        id: 'closing',
+        name: 'Deal Closing',
+        description: 'Finalize and execute investment agreement',
         icon: <PaidIcon />,
         status: 'pending',
         timestamp: 'Pending',
@@ -180,18 +180,18 @@ const processFlowData = {
         dataCompleteness: {
           percentage: 40,
           missingElements: [
-            { field: 'Payment Method', count: 385, impact: 'Critical' },
+            { field: 'Closing Documents', count: 385, impact: 'Critical' },
             { field: 'Payment Schedule', count: 298, impact: 'High' },
-            { field: 'Tax Information', count: 246, impact: 'Medium' },
-            { field: 'Bank Routing Details', count: 198, impact: 'High' }
+            { field: 'Legal Approvals', count: 246, impact: 'Medium' },
+            { field: 'Bank Details', count: 198, impact: 'High' }
           ],
-          requiredFields: ['Payment Method', 'Payment Amount', 'Payee Information', 'Payment Schedule', 'Bank Routing Details'],
-          completedFields: ['Payment Amount', 'Payee Information'],
-          optionalFields: ['Tax Information', 'Remittance Advice', 'Electronic Payment ID']
+          requiredFields: ['Closing Documents', 'Payment Schedule', 'Legal Approvals', 'Bank Details', 'Signatures'],
+          completedFields: ['Signatures', 'Legal Approvals'],
+          optionalFields: ['Additional Agreements', 'Post-Closing Actions', 'Integration Plan']
         },
         entities: [
-          { type: 'Claim', id: 'CL67890', amount: '$350.00' },
-          { type: 'Payment', id: 'PAY00000', status: 'Pending' }
+          { type: 'Deal', id: 'DL54321', value: '$50M' },
+          { type: 'Closing', id: 'CL00000', status: 'Pending' }
         ]
       }
     ]

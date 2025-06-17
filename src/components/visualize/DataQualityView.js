@@ -59,13 +59,13 @@ const mockDataQualityMetrics = {
   ]
 };
 
-// Mock data for data quality issues (SUPPLIER/DEPARTMENT CONTEXT)
+// Mock data for data quality issues (PORTFOLIO COMPANY/INVESTMENT CONTEXT)
 const mockDataQualityIssues = [
   {
     id: 'DQ-101',
-    entity: 'Supplier',
-    field: 'contractValue',
-    rule: 'Contract value must be positive',
+    entity: 'Portfolio Company',
+    field: 'investmentValue',
+    rule: 'Investment value must be positive',
     severity: 'Critical',
     count: 5,
     status: 'Open',
@@ -74,9 +74,9 @@ const mockDataQualityIssues = [
   },
   {
     id: 'DQ-102',
-    entity: 'Supplier',
+    entity: 'Portfolio Company',
     field: 'complianceStatus',
-    rule: 'Compliance status must be valid',
+    rule: 'ESG compliance status must be valid',
     severity: 'High',
     count: 12,
     status: 'In Progress',
@@ -85,9 +85,9 @@ const mockDataQualityIssues = [
   },
   {
     id: 'DQ-103',
-    entity: 'Department',
-    field: 'departmentCode',
-    rule: 'Department code must be 3 uppercase letters',
+    entity: 'Investment',
+    field: 'fundCode',
+    rule: 'Fund code must be valid format',
     severity: 'Medium',
     count: 7,
     status: 'Open',
@@ -96,8 +96,8 @@ const mockDataQualityIssues = [
   },
   {
     id: 'DQ-104',
-    entity: 'Supplier',
-    field: 'supplierEmail',
+    entity: 'Portfolio Company',
+    field: 'companyEmail',
     rule: 'Email must be valid format',
     severity: 'Low',
     count: 18,
@@ -107,9 +107,9 @@ const mockDataQualityIssues = [
   },
   {
     id: 'DQ-105',
-    entity: 'Department',
-    field: 'budget',
-    rule: 'Budget must be greater than zero',
+    entity: 'Investment',
+    field: 'valuation',
+    rule: 'Valuation must be greater than zero',
     severity: 'High',
     count: 3,
     status: 'Resolved',
@@ -118,9 +118,9 @@ const mockDataQualityIssues = [
   },
   {
     id: 'DQ-106',
-    entity: 'Supplier',
-    field: 'supplierName',
-    rule: 'Supplier name must not be empty',
+    entity: 'Portfolio Company',
+    field: 'companyName',
+    rule: 'Company name must not be empty',
     severity: 'Medium',
     count: 9,
     status: 'In Progress',
@@ -143,13 +143,13 @@ const mockDataQualityTrends = {
   }
 };
 
-// Mock data for entity quality scores (SUPPLIER/DEPARTMENT CONTEXT)
+// Mock data for entity quality scores (PORTFOLIO COMPANY/INVESTMENT CONTEXT)
 const mockEntityQualityScores = [
-  { entity: 'Supplier', score: 91, issues: 28, criticalIssues: 1 },
-  { entity: 'Department', score: 88, issues: 17, criticalIssues: 0 },
-  { entity: 'Contract', score: 84, issues: 22, criticalIssues: 2 },
-  { entity: 'Compliance', score: 93, issues: 8, criticalIssues: 0 },
-  { entity: 'Project', score: 89, issues: 12, criticalIssues: 0 }
+  { entity: 'Portfolio Company', score: 91, issues: 28, criticalIssues: 1 },
+  { entity: 'Investment', score: 88, issues: 17, criticalIssues: 0 },
+  { entity: 'Deal', score: 84, issues: 22, criticalIssues: 2 },
+  { entity: 'ESG Metrics', score: 93, issues: 8, criticalIssues: 0 },
+  { entity: 'Performance', score: 89, issues: 12, criticalIssues: 0 }
 ];
 
 const DataQualityView = () => {
@@ -403,11 +403,11 @@ const DataQualityView = () => {
                 onChange={(e) => setSelectedEntity(e.target.value)}
               >
                 <MenuItem value="All">All Entities</MenuItem>
-                <MenuItem value="Supplier">Supplier</MenuItem>
-                <MenuItem value="Department">Department</MenuItem>
-                <MenuItem value="Contract">Contract</MenuItem>
-                <MenuItem value="Compliance">Compliance</MenuItem>
-                <MenuItem value="Project">Project</MenuItem>
+                <MenuItem value="Portfolio Company">Portfolio Company</MenuItem>
+                <MenuItem value="Investment">Investment</MenuItem>
+                <MenuItem value="Deal">Deal</MenuItem>
+                <MenuItem value="ESG Metrics">ESG Metrics</MenuItem>
+                <MenuItem value="Performance">Performance</MenuItem>
               </Select>
             </FormControl>
             <FormControl size="small" sx={{ minWidth: 120 }}>

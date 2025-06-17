@@ -60,354 +60,115 @@ const AFrameLoader = dynamic(() => import('./wrappers/AFrameLoader'), { ssr: fal
 // Import ForceGraphVR separately - this automatically uses A-Frame
 const ForceGraphVR = dynamic(() => import('react-force-graph-vr'), { ssr: false });
 
-// Mock data for US Department of Transportation ontology
+// Mock data for Wealth Management and Private Equity Portfolio ontology
 const ontologyData = {
   rootEntities: [
-    'FAA AVIATOR System',
-    'Air Traffic Skills Assessment (ATSA)',
-    'ATC Sector DB',
-    'NTSB: Airspace data',
-    'NTSB: Near Misses and collisions',
-    'NTSB: Highway Safety Data',
-    'FAA Acquisition Management System (AMS)',
-    'Proposal Management System (PMS)',
-    'System for Award Management (SAM)',
-    'SBIR Portal',
-    'NHTSA Acquisition Management System (NAMS)',
-    'Continental Road Maintenance Data (CRMD)',
-    'Highway Performance Monitoring System (HPMS)',
-    'NHTSA',
-    'National Rail Acquisition Management System (NRAMS)',
-    'Rail Maintenance Data (RMD)',
-    'Railway Monitoring System (RMS)',
-    'Realtime Data',
-    'Forecast Data'
+    'Portfolio Management System',
+    'Investment Analytics Platform',
+    'Risk Management Database',
+    'Portco Performance Metrics',
+    'Portco Financial Data',
+    'Portco Operational Data',
+    'Deal Flow Management System',
+    'Due Diligence Repository',
+    'LP Reporting Portal',
+    'Compliance Monitoring System',
+    'Market Intelligence Platform',
+    'Portco Valuation Models',
+    'Portco ESG Metrics',
+    'Portco Growth Analytics',
+    'Portco Integration Tracking',
+    'Portco Exit Planning',
+    'Real-time Market Data',
+    'Forecast Models'
   ],
   entityDetails: {
-    'FAA AVIATOR System': {
-      name: 'FAA AVIATOR System',
-      icon: <StorageIcon />, // aviation icon could be used if available
+    'Portfolio Management System': {
+      name: 'Portfolio Management System',
+      icon: <StorageIcon />,
       color: '#1976d2',
-      description: 'Aviation workforce credentialing and training records',
+      description: 'Central system for managing private equity portfolio companies',
       instances: 45231,
       fields: [
-        { name: 'aviator_id', type: 'string', description: 'Unique identifier for aviator' },
-        { name: 'name', type: 'string', description: 'Aviator name' },
-        { name: 'certification', type: 'string', description: 'Certification type' }
+        { name: 'portco_id', type: 'string', description: 'Unique identifier for portfolio company' },
+        { name: 'company_name', type: 'string', description: 'Portfolio company name' },
+        { name: 'investment_stage', type: 'string', description: 'Investment stage (Growth, Buyout, etc.)' }
       ],
       relationships: [
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'assessed by', cardinality: 'N:1', description: 'Aviator assessed by ATSA' }
+        { entity: 'Investment Analytics Platform', type: 'analyzed by', cardinality: 'N:1', description: 'Portfolio company analyzed by Investment Analytics' }
       ]
     },
-    'Air Traffic Skills Assessment (ATSA)': {
-      name: 'Air Traffic Skills Assessment (ATSA)',
-      icon: <StorageIcon />, // assessment icon if available
+    'Investment Analytics Platform': {
+      name: 'Investment Analytics Platform',
+      icon: <StorageIcon />,
       color: '#388e3c',
-      description: 'Assessment results and candidate tracking for air traffic controllers',
+      description: 'Advanced analytics and performance tracking for portfolio companies',
       instances: 12890,
       fields: [
-        { name: 'assessment_id', type: 'string', description: 'Unique identifier for assessment' },
-        { name: 'candidate_id', type: 'string', description: 'Candidate identifier' },
-        { name: 'score', type: 'number', description: 'Assessment score' }
+        { name: 'analysis_id', type: 'string', description: 'Unique identifier for analysis' },
+        { name: 'portco_id', type: 'string', description: 'Portfolio company identifier' },
+        { name: 'performance_score', type: 'number', description: 'Performance score' }
       ],
       relationships: [
-        { entity: 'FAA AVIATOR System', type: 'assesses', cardinality: 'N:1', description: 'Assessment for aviator' },
-        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Assessment related to ATC Sectors' },
-        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Airspace data' },
-        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Near Misses and collisions' },
-        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Assessment related to Highway Safety Data' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Assessment related to FAA AMS' }
+        { entity: 'Portfolio Management System', type: 'analyzes', cardinality: 'N:1', description: 'Analysis for portfolio company' },
+        { entity: 'Risk Management Database', type: 'related to', cardinality: 'N:N', description: 'Analysis related to Risk Management' },
+        { entity: 'Portco Performance Metrics', type: 'related to', cardinality: 'N:N', description: 'Analysis related to Performance Metrics' },
+        { entity: 'Portco Financial Data', type: 'related to', cardinality: 'N:N', description: 'Analysis related to Financial Data' },
+        { entity: 'Portco Operational Data', type: 'related to', cardinality: 'N:N', description: 'Analysis related to Operational Data' }
       ]
     },
-    'ATC Sector DB': {
-      name: 'ATC Sector DB',
+    'Risk Management Database': {
+      name: 'Risk Management Database',
       icon: <StorageIcon />,
       color: '#fbc02d',
-      description: 'Air Traffic Control Sectors Data',
+      description: 'Risk assessment and monitoring for portfolio companies',
       instances: 23456,
       fields: [
-        { name: 'sector_id', type: 'string', description: 'Unique identifier for sector' },
-        { name: 'location', type: 'string', description: 'Sector location' }
+        { name: 'risk_id', type: 'string', description: 'Unique identifier for risk assessment' },
+        { name: 'risk_category', type: 'string', description: 'Risk category' }
       ],
       relationships: [
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to ATSA' },
-        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Airspace data' },
-        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Near Misses and collisions' },
-        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to Highway Safety Data' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'ATC Sector related to FAA AMS' }
+        { entity: 'Investment Analytics Platform', type: 'related to', cardinality: 'N:N', description: 'Risk data related to Investment Analytics' },
+        { entity: 'Portco Performance Metrics', type: 'related to', cardinality: 'N:N', description: 'Risk data related to Performance Metrics' },
+        { entity: 'Portco Financial Data', type: 'related to', cardinality: 'N:N', description: 'Risk data related to Financial Data' },
+        { entity: 'Portco Operational Data', type: 'related to', cardinality: 'N:N', description: 'Risk data related to Operational Data' }
       ]
     },
-    'NTSB: Airspace data': {
-      name: 'NTSB: Airspace data',
+    'Portco Performance Metrics': {
+      name: 'Portco Performance Metrics',
       icon: <StorageIcon />,
       color: '#8e24aa',
-      description: 'Airspace data',
+      description: 'Key performance indicators and metrics for portfolio companies',
       instances: 15432,
       fields: [
-        { name: 'airspace_id', type: 'string', description: 'Unique identifier for airspace' },
-        { name: 'region', type: 'string', description: 'Airspace region' }
+        { name: 'metric_id', type: 'string', description: 'Unique identifier for metric' },
+        { name: 'metric_type', type: 'string', description: 'Type of performance metric' }
       ],
       relationships: [
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to ATSA' },
-        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to ATC Sector DB' },
-        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to Near Misses and collisions' },
-        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to Highway Safety Data' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Airspace data related to FAA AMS' }
+        { entity: 'Investment Analytics Platform', type: 'related to', cardinality: 'N:N', description: 'Performance metrics related to Investment Analytics' },
+        { entity: 'Risk Management Database', type: 'related to', cardinality: 'N:N', description: 'Performance metrics related to Risk Management' },
+        { entity: 'Portco Financial Data', type: 'related to', cardinality: 'N:N', description: 'Performance metrics related to Financial Data' },
+        { entity: 'Portco Operational Data', type: 'related to', cardinality: 'N:N', description: 'Performance metrics related to Operational Data' }
       ]
-    },
-    'NTSB: Near Misses and collisions': {
-      name: 'NTSB: Near Misses and collisions',
-      icon: <StorageIcon />,
-      color: '#e53935',
-      description: 'Near Misses and collisions',
-      instances: 9823,
-      fields: [
-        { name: 'event_id', type: 'string', description: 'Unique identifier for event' },
-        { name: 'type', type: 'string', description: 'Event type' }
-      ],
-      relationships: [
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to ATSA' },
-        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to ATC Sector DB' },
-        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to Airspace data' },
-        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to Highway Safety Data' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Near Misses and collisions related to FAA AMS' }
-      ]
-    },
-    'NTSB: Highway Safety Data': {
-      name: 'NTSB: Highway Safety Data',
-      icon: <StorageIcon />,
-      color: '#3949ab',
-      description: 'Highway Safety Data',
-      instances: 34567,
-      fields: [
-        { name: 'record_id', type: 'string', description: 'Unique identifier for record' },
-        { name: 'state', type: 'string', description: 'State' }
-      ],
-      relationships: [
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to ATSA' },
-        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to ATC Sector DB' },
-        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to Airspace data' },
-        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to Near Misses and collisions' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'related to', cardinality: 'N:N', description: 'Highway Safety Data related to FAA AMS' }
-      ]
-    },
-    'FAA Acquisition Management System (AMS)': {
-      name: 'FAA Acquisition Management System (AMS)',
-      icon: <StorageIcon />,
-      color: '#ffa000',
-      description: 'Centralized procurement and contract management for FAA operations',
-      instances: 234567,
-      fields: [
-        { name: 'contract_id', type: 'string', description: 'Unique contract identifier' },
-        { name: 'vendor', type: 'string', description: 'Vendor name' }
-      ],
-      relationships: [
-        { entity: 'System for Award Management (SAM)', type: 'references', cardinality: 'N:1', description: 'References SAM for vendor eligibility' },
-        { entity: 'Air Traffic Skills Assessment (ATSA)', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to ATSA' },
-        { entity: 'ATC Sector DB', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to ATC Sector DB' },
-        { entity: 'NTSB: Airspace data', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Airspace data' },
-        { entity: 'NTSB: Near Misses and collisions', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Near Misses and collisions' },
-        { entity: 'NTSB: Highway Safety Data', type: 'related to', cardinality: 'N:N', description: 'FAA AMS related to Highway Safety Data' },
-        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with PMS' },
-        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with SAM' },
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with NHTSA NAMS' },
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'FAA AMS shares procurement data with NRAMS' }
-      ]
-    },
-    'Proposal Management System (PMS)': {
-      name: 'Proposal Management System (PMS)',
-      icon: <StorageIcon />,
-      color: '#00838f',
-      description: 'Announced, created and funded proposals',
-      instances: 11234,
-      fields: [
-        { name: 'proposal_id', type: 'string', description: 'Unique proposal identifier' },
-        { name: 'status', type: 'string', description: 'Proposal status' }
-      ],
-      relationships: [
-        { entity: 'System for Award Management (SAM)', type: 'related to', cardinality: 'N:N', description: 'PMS related to SAM' },
-        { entity: 'SBIR Portal', type: 'related to', cardinality: 'N:N', description: 'PMS related to SBIR Portal' },
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with NHTSA NAMS' },
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with NRAMS' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'PMS shares procurement data with FAA AMS' }
-      ]
-    },
-    'System for Award Management (SAM)': {
-      name: 'System for Award Management (SAM)',
-      icon: <StorageIcon />,
-      color: '#9e9e9e',
-      description: 'Federal vendor registration and eligibility verification',
-      instances: 982345,
-      fields: [
-        { name: 'sam_id', type: 'string', description: 'SAM registration ID' },
-        { name: 'vendor', type: 'string', description: 'Vendor name' }
-      ],
-      relationships: [
-        { entity: 'Proposal Management System (PMS)', type: 'related to', cardinality: 'N:N', description: 'SAM related to PMS' },
-        { entity: 'SBIR Portal', type: 'related to', cardinality: 'N:N', description: 'SAM related to SBIR Portal' },
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with NHTSA NAMS' },
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with NRAMS' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'SAM shares procurement data with FAA AMS' }
-      ]
-    },
-    'SBIR Portal': {
-      name: 'SBIR Portal',
-      icon: <StorageIcon />,
-      color: '#43a047',
-      description: 'Small Business Innovation Research program management and submissions',
-      instances: 15432,
-      fields: [
-        { name: 'submission_id', type: 'string', description: 'Submission identifier' },
-        { name: 'business_name', type: 'string', description: 'Business name' }
-      ],
-      relationships: [
-        { entity: 'Proposal Management System (PMS)', type: 'related to', cardinality: 'N:N', description: 'SBIR Portal related to PMS' },
-        { entity: 'System for Award Management (SAM)', type: 'related to', cardinality: 'N:N', description: 'SBIR Portal related to SAM' }
-      ]
-    },
-    'NHTSA Acquisition Management System (NAMS)': {
-      name: 'NHTSA Acquisition Management System (NAMS)',
-      icon: <StorageIcon />,
-      color: '#fb8c00',
-      description: 'Centralized procurement and contract management',
-      instances: 22345,
-      fields: [
-        { name: 'contract_id', type: 'string', description: 'Contract identifier' },
-        { name: 'vendor', type: 'string', description: 'Vendor name' }
-      ],
-      relationships: [
-        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'NAMS related to CRMD' },
-        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'NAMS related to HPMS' },
-        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'NAMS related to NHTSA' },
-        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with PMS' },
-        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with SAM' },
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with NRAMS' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NHTSA NAMS shares procurement data with FAA AMS' }
-      ]
-    },
-    'Continental Road Maintenance Data (CRMD)': {
-      name: 'Continental Road Maintenance Data (CRMD)',
-      icon: <StorageIcon />,
-      color: '#00897b',
-      description: 'Data covering road maintenance',
-      instances: 34567,
-      fields: [
-        { name: 'maintenance_id', type: 'string', description: 'Maintenance record ID' },
-        { name: 'road_segment', type: 'string', description: 'Road segment' }
-      ],
-      relationships: [
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'CRMD related to NAMS' },
-        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'CRMD related to HPMS' },
-        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'CRMD related to NHTSA' }
-      ]
-    },
-    'Highway Performance Monitoring System (HPMS)': {
-      name: 'Highway Performance Monitoring System (HPMS)',
-      icon: <StorageIcon />,
-      color: '#ffd600',
-      description: 'National highway data collection and performance metrics',
-      instances: 345678,
-      fields: [
-        { name: 'hpms_id', type: 'string', description: 'HPMS record ID' },
-        { name: 'state', type: 'string', description: 'State' }
-      ],
-      relationships: [
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'HPMS related to NAMS' },
-        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'HPMS related to CRMD' },
-        { entity: 'NHTSA', type: 'related to', cardinality: 'N:N', description: 'HPMS related to NHTSA' }
-      ]
-    },
-    'NHTSA': {
-      name: 'NHTSA',
-      icon: <StorageIcon />,
-      color: '#c62828',
-      description: 'Highway traffic data (for DOT extension)',
-      instances: 45678,
-      fields: [
-        { name: 'traffic_id', type: 'string', description: 'Traffic record ID' },
-        { name: 'location', type: 'string', description: 'Location' }
-      ],
-      relationships: [
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to NAMS' },
-        { entity: 'Continental Road Maintenance Data (CRMD)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to CRMD' },
-        { entity: 'Highway Performance Monitoring System (HPMS)', type: 'related to', cardinality: 'N:N', description: 'NHTSA related to HPMS' }
-      ]
-    },
-    'National Rail Acquisition Management System (NRAMS)': {
-      name: 'National Rail Acquisition Management System (NRAMS)',
-      icon: <StorageIcon />,
-      color: '#6d4c41',
-      description: 'Centralized procurement and contract management',
-      instances: 33456,
-      fields: [
-        { name: 'contract_id', type: 'string', description: 'Contract identifier' },
-        { name: 'vendor', type: 'string', description: 'Vendor name' }
-      ],
-      relationships: [
-        { entity: 'Rail Maintenance Data (RMD)', type: 'related to', cardinality: 'N:N', description: 'NRAMS related to RMD' },
-        { entity: 'Railway Monitoring System (RMS)', type: 'related to', cardinality: 'N:N', description: 'NRAMS related to RMS' },
-        { entity: 'Proposal Management System (PMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with PMS' },
-        { entity: 'System for Award Management (SAM)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with SAM' },
-        { entity: 'NHTSA Acquisition Management System (NAMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with NHTSA NAMS' },
-        { entity: 'FAA Acquisition Management System (AMS)', type: 'procurement data sharing', cardinality: 'N:N', description: 'NRAMS shares procurement data with FAA AMS' }
-      ]
-    },
-    'Rail Maintenance Data (RMD)': {
-      name: 'Rail Maintenance Data (RMD)',
-      icon: <StorageIcon />,
-      color: '#0277bd',
-      description: 'Data covering rail maintenance',
-      instances: 22345,
-      fields: [
-        { name: 'maintenance_id', type: 'string', description: 'Maintenance record ID' },
-        { name: 'rail_segment', type: 'string', description: 'Rail segment' }
-      ],
-      relationships: [
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'related to', cardinality: 'N:N', description: 'RMD related to NRAMS' },
-        { entity: 'Railway Monitoring System (RMS)', type: 'related to', cardinality: 'N:N', description: 'RMD related to RMS' }
-      ]
-    },
-    'Railway Monitoring System (RMS)': {
-      name: 'Railway Monitoring System (RMS)',
-      icon: <StorageIcon />,
-      color: '#00bcd4',
-      description: 'National highway data collection and performance metrics',
-      instances: 55678,
-      fields: [
-        { name: 'rms_id', type: 'string', description: 'RMS record ID' },
-        { name: 'region', type: 'string', description: 'Region' }
-      ],
-      relationships: [
-        { entity: 'National Rail Acquisition Management System (NRAMS)', type: 'related to', cardinality: 'N:N', description: 'RMS related to NRAMS' },
-        { entity: 'Rail Maintenance Data (RMD)', type: 'related to', cardinality: 'N:N', description: 'RMS related to RMD' }
-      ]
-    },
-    'Realtime Data': {
-      name: 'Realtime Data',
-      icon: <StorageIcon />,
-      color: '#0097a7',
-      description: 'Real-time Conditions (visibility, precipitation)',
-      instances: 123456,
-      fields: [
-        { name: 'realtime_id', type: 'string', description: 'Realtime record ID' },
-        { name: 'condition', type: 'string', description: 'Condition type' }
-      ],
-      relationships: []
-    },
-    'Forecast Data': {
-      name: 'Forecast Data',
-      icon: <StorageIcon />,
-      color: '#7e57c2',
-      description: 'Forecast, Weather Patterns (current & historicals)',
-      instances: 65432,
-      fields: [
-        { name: 'forecast_id', type: 'string', description: 'Forecast record ID' },
-        { name: 'date', type: 'date', description: 'Forecast date' }
-      ],
-      relationships: []
     }
   }
 };
+
+// Add placeholder entries for missing entities in entityDetails
+const DEFAULT_COLOR = '#757575';
+ontologyData.rootEntities.forEach(entityName => {
+  if (!ontologyData.entityDetails[entityName]) {
+    ontologyData.entityDetails[entityName] = {
+      name: entityName,
+      icon: <StorageIcon />,
+      color: DEFAULT_COLOR,
+      description: '',
+      instances: 1000,
+      fields: [],
+      relationships: []
+    };
+  }
+});
 
 export default function OntologyView() {
   const [selectedEntity, setSelectedEntity] = useState(ontologyData.rootEntities[0]);

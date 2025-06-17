@@ -39,28 +39,28 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 
-// Mock supplier data
+// Mock portfolio company data
 const supplierData = {
   overview: {
-    totalSuppliers: 3200,
-    activeSuppliers: 2780,
-    inactiveSuppliers: 420,
-    averageContractValue: '$1,250,000',
-    topCategory: 'Construction',
-    recentContracts: 112
+    totalPortcos: 3200,
+    activePortcos: 2780,
+    inactivePortcos: 420,
+    averageInvestmentValue: '$125,000,000',
+    topSector: 'Technology',
+    recentInvestments: 112
   },
   dataSources: {
-    erp: {
-      name: 'ERP Systems',
-      sources: ['SAP ERP', 'NetSuite'],
+    financial: {
+      name: 'Financial Systems',
+      sources: ['Portfolio Management System', 'Investment Analytics Platform'],
       lastUpdated: '2023-10-21 08:45 AM',
       recordCount: 3124,
       status: 'Connected',
       confidence: 93,
     },
-    procurement: {
-      name: 'Procurement Systems',
-      sources: ['FAA AMS', 'NHTSA NAMS', 'NRAMS'],
+    operational: {
+      name: 'Operational Systems',
+      sources: ['Portco Performance Metrics', 'Portco Operational Data'],
       lastUpdated: '2023-10-21 09:30 AM',
       recordCount: 2987,
       status: 'Connected',
@@ -68,7 +68,7 @@ const supplierData = {
     },
     compliance: {
       name: 'Compliance Systems',
-      sources: ['SAM', 'SBIR Portal'],
+      sources: ['Compliance Monitoring System', 'ESG Metrics'],
       lastUpdated: '2023-10-20 06:15 PM',
       recordCount: 2890,
       status: 'Connected',
@@ -77,61 +77,61 @@ const supplierData = {
   },
   suppliers: [
     {
-      id: 'SUP-00123',
-      companyName: 'Acme Infrastructure Inc.',
+      id: 'PCO-00123',
+      companyName: 'Tech Innovators Inc.',
       contact: {
         name: 'Alice Johnson',
-        email: 'alice.johnson@acmeinfra.com',
+        email: 'alice.johnson@techinnovators.com',
         phone: '(555) 321-9876',
-        location: 'Washington, DC'
+        location: 'San Francisco, CA'
       },
-      category: 'Construction',
-      contractValue: '$2,500,000',
+      sector: 'Technology',
+      investmentValue: '$250,000,000',
       status: 'Active',
       complianceStatus: 'Compliant',
       riskScore: 'Low',
       sourceRecords: {
-        erp: {
-          source: 'SAP ERP',
-          id: 'ERP-200123',
-          companyName: 'Acme Infrastructure Inc.',
+        financial: {
+          source: 'Portfolio Management System',
+          id: 'PMS-200123',
+          companyName: 'Tech Innovators Inc.',
           contact: 'Alice Johnson',
-          email: 'alice.johnson@acmeinfra.com',
+          email: 'alice.johnson@techinnovators.com',
           phone: '(555) 321-9876',
-          location: 'Washington, DC',
-          contractValue: '$2,500,000',
-          lastContract: '2023-09-10',
-          supplierSince: '2015-03-22',
+          location: 'San Francisco, CA',
+          investmentValue: '$250,000,000',
+          lastValuation: '2023-09-10',
+          investmentDate: '2015-03-22',
           matchConfidence: 98,
-          variants: ['Acme Infra', 'Acme Infrastructure'],
-          category: 'Construction'
+          variants: ['Tech Innovators', 'Tech Innovators Inc'],
+          sector: 'Technology'
         },
-        procurement: {
-          source: 'FAA AMS',
-          id: 'AMS-90012',
-          companyName: 'Acme Infrastructure Inc.',
+        operational: {
+          source: 'Portco Performance Metrics',
+          id: 'PPM-90012',
+          companyName: 'Tech Innovators Inc.',
           contact: 'Alice Johnson',
-          email: 'alice.johnson@acmeinfra.com',
+          email: 'alice.johnson@techinnovators.com',
           phone: '(555) 321-9876',
-          location: 'Washington, DC',
-          contractId: 'CON-2023-001',
-          contractValue: '$2,500,000',
+          location: 'San Francisco, CA',
+          investmentId: 'INV-2023-001',
+          investmentValue: '$250,000,000',
           complianceStatus: 'Compliant',
           matchConfidence: 97,
-          lastAward: '2023-09-10',
+          lastReporting: '2023-09-10',
           status: 'Active'
         },
         compliance: {
-          source: 'SAM',
-          id: 'SAM-123456',
-          companyName: 'Acme Infrastructure Inc.',
+          source: 'Compliance Monitoring System',
+          id: 'CMS-123456',
+          companyName: 'Tech Innovators Inc.',
           contact: 'Alice Johnson',
-          email: 'alice.johnson@acmeinfra.com',
+          email: 'alice.johnson@techinnovators.com',
           phone: '(555) 321-9876',
-          location: 'Washington, DC',
+          location: 'San Francisco, CA',
           complianceStatus: 'Compliant',
           matchConfidence: 96,
-          registrationDate: '2015-03-15',
+          investmentDate: '2015-03-15',
           status: 'Active'
         }
       },
@@ -152,38 +152,38 @@ const supplierData = {
         ]
       },
       recentActivity: [
-        { id: 'CON-2023-001', type: 'Contract Awarded', date: '2023-09-10', details: 'FAA runway expansion', source: 'FAA AMS' },
-        { id: 'CMP-2023-002', type: 'Compliance Check', date: '2023-08-15', details: 'SAM compliance verified', source: 'SAM' },
-        { id: 'UPD-2023-003', type: 'Profile Update', date: '2023-07-20', details: 'Contact info updated', source: 'SAP ERP' }
+        { id: 'INV-2023-001', type: 'Investment Made', date: '2023-09-10', details: 'Series C funding round', source: 'Portfolio Management System' },
+        { id: 'CMP-2023-002', type: 'Compliance Check', date: '2023-08-15', details: 'ESG compliance verified', source: 'Compliance Monitoring System' },
+        { id: 'UPD-2023-003', type: 'Profile Update', date: '2023-07-20', details: 'Financial metrics updated', source: 'Investment Analytics Platform' }
       ],
-      contracts: [
+      investments: [
         {
-          id: 'CON-2023-001',
+          id: 'INV-2023-001',
           date: '2023-09-10',
-          type: 'Construction',
+          type: 'Series C',
           status: 'Active',
-          value: '$2,500,000',
-          agency: 'FAA',
+          value: '$250,000,000',
+          fund: 'Growth Fund III',
           riskLevel: 'Low',
           complianceStatus: 'Compliant'
         },
         {
-          id: 'CON-2022-015',
+          id: 'INV-2022-015',
           date: '2022-06-18',
-          type: 'Maintenance',
+          type: 'Series B',
           status: 'Completed',
-          value: '$1,200,000',
-          agency: 'NHTSA',
+          value: '$120,000,000',
+          fund: 'Growth Fund II',
           riskLevel: 'Medium',
           complianceStatus: 'Compliant'
         },
         {
-          id: 'CON-2021-008',
+          id: 'INV-2021-008',
           date: '2021-03-12',
-          type: 'Consulting',
+          type: 'Series A',
           status: 'Completed',
-          value: '$800,000',
-          agency: 'DOT',
+          value: '$80,000,000',
+          fund: 'Growth Fund I',
           riskLevel: 'Low',
           complianceStatus: 'Compliant'
         }
@@ -192,12 +192,12 @@ const supplierData = {
   ]
 };
 
-export default function SupplierView() {
-  // Always use Acme Infrastructure Inc. (first supplier) and remove the ability to select suppliers
-  const selectedSupplier = supplierData.suppliers[0];
+export default function PortfolioCompanyView() {
+  // Always use Tech Innovators Inc. (first portfolio company) and remove the ability to select companies
+  const selectedPortco = supplierData.suppliers[0];
   const [searchQuery, setSearchQuery] = useState('');
   const [chartType, setChartType] = useState('pie');
-  const [activeSource, setActiveSource] = useState('golden'); // 'golden', 'erp', 'procurement', 'compliance'
+  const [activeSource, setActiveSource] = useState('golden'); // 'golden', 'financial', 'operational', 'compliance'
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -215,15 +215,15 @@ export default function SupplierView() {
     }
   };
 
-  // Get the current supplier data based on the selected source
-  const getCurrentSupplierView = () => {
+  // Get the current portfolio company data based on the selected source
+  const getCurrentPortcoView = () => {
     if (activeSource === 'golden') {
-      return selectedSupplier;
+      return selectedPortco;
     } else {
-      const sourceData = selectedSupplier.sourceRecords[activeSource];
-      if (!sourceData) return selectedSupplier; // fallback to golden if missing
+      const sourceData = selectedPortco.sourceRecords[activeSource];
+      if (!sourceData) return selectedPortco; // fallback to golden if missing
       return {
-        ...selectedSupplier,
+        ...selectedPortco,
         companyName: sourceData.companyName,
         contact: {
           name: sourceData.contact,
@@ -231,14 +231,14 @@ export default function SupplierView() {
           phone: sourceData.phone,
           location: sourceData.location
         },
-        contractValue: sourceData.contractValue,
+        investmentValue: sourceData.investmentValue,
         complianceStatus: sourceData.complianceStatus,
         sourceInfo: sourceData
       };
     }
   };
 
-  const currentSupplierView = getCurrentSupplierView();
+  const currentPortcoView = getCurrentPortcoView();
 
   // Sample chart elements (in a real implementation, we'd use a charting library)
   const renderBarChart = () => (
@@ -250,25 +250,25 @@ export default function SupplierView() {
         justifyContent: 'space-around',
         px: 2 
       }}>
-        {selectedSupplier.contracts.map((contract, index) => (
+        {selectedPortco.investments.map((investment, index) => (
           <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box 
               sx={{ 
                 width: 40, 
-                height: `${(parseFloat(contract.value.replace(/[$,]/g, '')) / 1000000) * 100}%`, 
+                height: `${(parseFloat(investment.value.replace(/[$,]/g, '')) / 1000000) * 100}%`, 
                 bgcolor: index === 0 ? 'primary.main' : index === 1 ? 'secondary.main' : 'success.main',
                 borderRadius: 1,
                 minHeight: 30
               }} 
             />
             <Typography variant="caption" sx={{ mt: 1, width: 70, textAlign: 'center' }}>
-              {contract.type}
+              {investment.type}
             </Typography>
           </Box>
         ))}
       </Box>
       <Typography variant="caption" sx={{ position: 'absolute', top: 0, right: 0 }}>
-        Contracts by Type
+        Investments by Type
       </Typography>
     </Box>
   );
@@ -295,7 +295,7 @@ export default function SupplierView() {
         </svg>
       </Box>
       <Typography variant="caption" sx={{ position: 'absolute', top: 0, right: 0 }}>
-        Contracts History (Past 3 Years)
+        Investment History (Past 3 Years)
       </Typography>
     </Box>
   );
@@ -314,15 +314,15 @@ export default function SupplierView() {
       <Box sx={{ position: 'absolute', top: 0, right: 0, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Box sx={{ width: 12, height: 12, bgcolor: 'primary.main', borderRadius: '50%' }} />
-          <Typography variant="caption">Construction (40%)</Typography>
+          <Typography variant="caption">Series C (40%)</Typography>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Box sx={{ width: 12, height: 12, bgcolor: 'secondary.main', borderRadius: '50%' }} />
-          <Typography variant="caption">Maintenance (35%)</Typography>
+          <Typography variant="caption">Series B (35%)</Typography>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Box sx={{ width: 12, height: 12, bgcolor: 'success.main', borderRadius: '50%' }} />
-          <Typography variant="caption">Consulting (25%)</Typography>
+          <Typography variant="caption">Series A (25%)</Typography>
         </Box>
       </Box>
     </Box>
@@ -343,13 +343,13 @@ export default function SupplierView() {
 
   return (
     <Box>
-      {/* Simplified header without supplier selection */}
+      {/* Simplified header without portfolio company selection */}
       <Box sx={{ mb: 3 }}>
         <Typography variant="h6" gutterBottom>
-          Master Data Management - Supplier Data 360
+          Master Data Management - Portfolio Company Data 360
         </Typography>
         <Typography variant="body2" color="text.secondary" paragraph>
-          Unified 360-degree view of supplier data from multiple enterprise systems with automatic reconciliation, matching, and merging to create a complete supplier profile.
+          Unified 360-degree view of portfolio company data from multiple enterprise systems with automatic reconciliation, matching, and merging to create a complete portfolio company profile.
         </Typography>
       </Box>
 
@@ -368,27 +368,27 @@ export default function SupplierView() {
           <ToggleButton value="golden" aria-label="golden record">
             Golden Record
           </ToggleButton>
-          <ToggleButton value="erp" aria-label="erp source">
-            ERP (SAP/NetSuite)
+          <ToggleButton value="financial" aria-label="financial source">
+            Portfolio Management System
           </ToggleButton>
-          <ToggleButton value="procurement" aria-label="procurement source">
-            FAA AMS
+          <ToggleButton value="operational" aria-label="operational source">
+            Portco Performance Metrics
           </ToggleButton>
           <ToggleButton value="compliance" aria-label="compliance source">
-            SAM
+            Compliance Monitoring System
           </ToggleButton>
         </ToggleButtonGroup>
         {activeSource !== 'golden' && (
           <Typography variant="caption" display="block" sx={{ mb: 1 }}>
             Viewing source data from {supplierData.dataSources[activeSource]?.name} •
-            Match confidence: {currentSupplierView.sourceInfo?.matchConfidence ?? '--'}% •
-            Source ID: {currentSupplierView.sourceInfo?.id ?? '--'}
+            Match confidence: {currentPortcoView.sourceInfo?.matchConfidence ?? '--'}% •
+            Source ID: {currentPortcoView.sourceInfo?.id ?? '--'}
           </Typography>
         )}
         {activeSource === 'golden' && (
           <Typography variant="caption" display="block" sx={{ mb: 1 }}>
-            Viewing consolidated golden record • Data quality score: {selectedSupplier.reconciliation.dataQualityScore}% • 
-            Last consolidated: {selectedSupplier.reconciliation.consolidationDate}
+            Viewing consolidated golden record • Data quality score: {selectedPortco.reconciliation.dataQualityScore}% • 
+            Last consolidated: {selectedPortco.reconciliation.consolidationDate}
           </Typography>
         )}
       </Box>
@@ -402,9 +402,9 @@ export default function SupplierView() {
                   <PersonIcon />
                 </Avatar>
                 <Box>
-                  <Typography variant="h6">{currentSupplierView.companyName}</Typography>
+                  <Typography variant="h6">{currentPortcoView.companyName}</Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {currentSupplierView.category} Supplier
+                    {currentPortcoView.sector} Portfolio Company
                   </Typography>
                 </Box>
               </Box>
@@ -420,7 +420,7 @@ export default function SupplierView() {
                   </ListItemAvatar>
                   <ListItemText 
                     primary="Email" 
-                    secondary={currentSupplierView.contact.email} 
+                    secondary={currentPortcoView.contact.email} 
                     primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                   />
                 </ListItem>
@@ -432,7 +432,7 @@ export default function SupplierView() {
                   </ListItemAvatar>
                   <ListItemText 
                     primary="Phone" 
-                    secondary={currentSupplierView.contact.phone} 
+                    secondary={currentPortcoView.contact.phone} 
                     primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                   />
                 </ListItem>
@@ -444,11 +444,11 @@ export default function SupplierView() {
                   </ListItemAvatar>
                   <ListItemText 
                     primary="Location" 
-                    secondary={currentSupplierView.contact.location} 
+                    secondary={currentPortcoView.contact.location} 
                     primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                   />
                 </ListItem>
-                {activeSource === 'erp' && (
+                {activeSource === 'financial' && (
                   <>
                     <ListItem>
                       <ListItemAvatar>
@@ -457,35 +457,35 @@ export default function SupplierView() {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText 
-                        primary="Contract Value" 
-                        secondary={currentSupplierView.contractValue} 
+                        primary="Investment Value" 
+                        secondary={currentPortcoView.investmentValue} 
                         primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                       />
                     </ListItem>
                     <ListItem>
                       <ListItemText 
-                        primary="Supplier Since" 
-                        secondary={currentSupplierView.sourceInfo.supplierSince} 
+                        primary="Last Valuation" 
+                        secondary={currentPortcoView.sourceInfo.lastValuation} 
                         primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                         sx={{ ml: 9 }}
                       />
                     </ListItem>
                   </>
                 )}
-                {activeSource === 'procurement' && (
+                {activeSource === 'operational' && (
                   <>
                     <ListItem>
                       <ListItemText 
-                        primary="Contract ID" 
-                        secondary={currentSupplierView.sourceInfo.contractId} 
+                        primary="Investment ID" 
+                        secondary={currentPortcoView.sourceInfo.investmentId} 
                         primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                         sx={{ ml: 9 }}
                       />
                     </ListItem>
                     <ListItem>
                       <ListItemText 
-                        primary="Last Award" 
-                        secondary={currentSupplierView.sourceInfo.lastAward} 
+                        primary="Last Reporting" 
+                        secondary={currentPortcoView.sourceInfo.lastReporting} 
                         primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                         sx={{ ml: 9 }}
                       />
@@ -497,7 +497,7 @@ export default function SupplierView() {
                     <ListItem>
                       <ListItemText 
                         primary="Registration Date" 
-                        secondary={currentSupplierView.sourceInfo.registrationDate} 
+                        secondary={currentPortcoView.sourceInfo.investmentDate} 
                         primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                         sx={{ ml: 9 }}
                       />
@@ -512,8 +512,8 @@ export default function SupplierView() {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText 
-                      primary="Contract Value" 
-                      secondary={selectedSupplier.contractValue} 
+                      primary="Investment Value" 
+                      secondary={selectedPortco.investmentValue} 
                       primaryTypographyProps={{ color: 'text.secondary', variant: 'body2' }}
                     />
                   </ListItem>
@@ -529,20 +529,20 @@ export default function SupplierView() {
                   </Typography>
                   <Box sx={{ mb: 2 }}>
                     <Typography variant="caption" display="block" color="warning.main">
-                      Conflicting Fields: {selectedSupplier.reconciliation.conflictFields.join(', ')}
+                      Conflicting Fields: {selectedPortco.reconciliation.conflictFields.join(', ')}
                     </Typography>
                     <Typography variant="caption" display="block" color="success.main">
-                      Resolved Fields: {selectedSupplier.reconciliation.resolvedFields.join(', ')}
+                      Resolved Fields: {selectedPortco.reconciliation.resolvedFields.join(', ')}
                     </Typography>
                     <Typography variant="caption" display="block">
-                      Matching Rules Applied: {selectedSupplier.reconciliation.matchingRules.join(', ')}
+                      Matching Rules Applied: {selectedPortco.reconciliation.matchingRules.join(', ')}
                     </Typography>
                   </Box>
                   
                   <Box sx={{ mb: 1 }}>
                     <Typography variant="caption" fontWeight="bold">Reconciliation Process:</Typography>
                     <List dense disablePadding>
-                      {selectedSupplier.reconciliation.processingSteps.map((step, index) => (
+                      {selectedPortco.reconciliation.processingSteps.map((step, index) => (
                         <ListItem key={index} disablePadding sx={{ py: 0 }}>
                           <ListItemText 
                             primary={`${index + 1}. ${step}`} 
@@ -562,7 +562,7 @@ export default function SupplierView() {
                 Recent Activity
               </Typography>
               <List dense>
-                {selectedSupplier.recentActivity.map((activity) => (
+                {selectedPortco.recentActivity.map((activity) => (
                   <ListItem key={activity.id} disableGutters>
                     <ListItemAvatar>
                       <Avatar sx={{ bgcolor: 'transparent', color: 'text.secondary' }}>
@@ -588,13 +588,13 @@ export default function SupplierView() {
               <Paper sx={{ p: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                   <Typography variant="subtitle1">
-                    Contracts History & Analysis
+                    Investment History & Analysis
                   </Typography>
                 </Box>
                 
                 <Box sx={{ mb: 3 }}>
                   <TextField
-                    placeholder="Search contracts..."
+                    placeholder="Search investments..."
                     variant="outlined"
                     size="small"
                     fullWidth
@@ -613,47 +613,47 @@ export default function SupplierView() {
                 {renderPieChart()}
                 
                 <Typography variant="subtitle2" gutterBottom sx={{ mt: 4, mb: 2 }}>
-                  Contracts Details
+                  Investment Details
                 </Typography>
                 <TableContainer component={Paper} variant="outlined">
                   <Table size="small">
                     <TableHead>
                       <TableRow sx={{ backgroundColor: 'action.hover' }}>
-                        <TableCell>Contract ID</TableCell>
+                        <TableCell>Investment ID</TableCell>
                         <TableCell>Date</TableCell>
                         <TableCell>Type</TableCell>
                         <TableCell>Status</TableCell>
                         <TableCell>Value</TableCell>
                         <TableCell>Risk Level</TableCell>
-                        <TableCell>Agency</TableCell>
+                        <TableCell>Fund</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {selectedSupplier.contracts
-                        .filter(contract => 
-                          contract.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          contract.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          contract.id.toLowerCase().includes(searchQuery.toLowerCase())
+                      {selectedPortco.investments
+                        .filter(investment => 
+                          investment.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          investment.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          investment.id.toLowerCase().includes(searchQuery.toLowerCase())
                         )
-                        .map((contract) => {
+                        .map((investment) => {
                           return (
-                            <TableRow key={contract.id}>
-                              <TableCell>{contract.id}</TableCell>
-                              <TableCell>{contract.date}</TableCell>
-                              <TableCell>{contract.type}</TableCell>
-                              <TableCell>{contract.status}</TableCell>
-                              <TableCell>{contract.value}</TableCell>
+                            <TableRow key={investment.id}>
+                              <TableCell>{investment.id}</TableCell>
+                              <TableCell>{investment.date}</TableCell>
+                              <TableCell>{investment.type}</TableCell>
+                              <TableCell>{investment.status}</TableCell>
+                              <TableCell>{investment.value}</TableCell>
                               <TableCell>
                                 <Chip 
-                                  label={contract.riskLevel} 
+                                  label={investment.riskLevel} 
                                   size="small"
                                   color={
-                                    contract.riskLevel === 'High' ? 'error' :
-                                    contract.riskLevel === 'Medium' ? 'warning' : 'success'
+                                    investment.riskLevel === 'High' ? 'error' :
+                                    investment.riskLevel === 'Medium' ? 'warning' : 'success'
                                   }
                                 />
                               </TableCell>
-                              <TableCell>{contract.agency}</TableCell>
+                              <TableCell>{investment.fund}</TableCell>
                             </TableRow>
                           );
                         })}
